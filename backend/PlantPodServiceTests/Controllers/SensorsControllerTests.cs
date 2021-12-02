@@ -9,7 +9,7 @@ namespace PlantPodServiceTests
     public class SensorsControllerTests
     {
         [Test]
-        public void ReceiveSensorData_ShouldReturnNoContentResult()
+        public void ReceiveSensorData_ReturnsNoContentResult()
         {
             var sut = new SensorsController();
             var data = new SensorData();
