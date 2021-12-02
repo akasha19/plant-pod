@@ -1,8 +1,8 @@
-using NUnit.Framework;
-using FluentAssertions;
-using PlantPodService.Controllers;
 using backend.model;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
+using NUnit.Framework;
+using PlantPodService.Controllers;
 
 namespace PlantPodServiceTests
 {
