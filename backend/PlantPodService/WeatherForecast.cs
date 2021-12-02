@@ -1,6 +1,6 @@
 using System;
 
-namespace backend
+namespace PlantPodService
 {
     public class WeatherForecast
     {

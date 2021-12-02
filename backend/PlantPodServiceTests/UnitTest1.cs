@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace backendTests
+namespace PlantPodServiceTests
 {
     public class Tests
     {

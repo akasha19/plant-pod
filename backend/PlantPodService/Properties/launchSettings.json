@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "backend": {
+    "PlantPodService": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "plant-pod",
