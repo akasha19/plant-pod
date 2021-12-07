@@ -1,0 +1,19 @@
+= API Documentation of the Plant Pod backend
+
+NOTE: All request bodies have to be provided as JSON formatted string.
+
+== Submit sensor data
+
+=== POST `/sensors`
+Description::
+submit sensor data from the arduino to the backend
+Request params:: none
+Query params:: none
+Request body::
+* sensorId [GUID]
+* temperature [decimal]
+Response::
+204 (No Content)
+
+Errors::
+500 (Internal server error)
