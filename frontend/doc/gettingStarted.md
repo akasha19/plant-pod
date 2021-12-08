@@ -2,11 +2,11 @@
 
 ## Adding a page
 
-To add a page, generate a component by running `ng generate component *name*` from the plant-pod-companion directory. Make sure to give it a meaningful name that describes it's purpose. Don't use verbs in component names. Seperate words with dashes. Eg.: room-overview-page.
+To add a page, generate a component by running `ng generate component *name*` from the plant-pod-companion directory. Make sure to give it a meaningful name that describes its purpose. Don't use verbs in component names. Seperate words with dashes. Eg.: room-overview-page.
 
 ## Adding components to a page
 
-Before building larger and more complex components with regular html syntax, check if any of the [angular material components](https://material.angular.io/components/categories) fit. you will have to do less styling and it will be easier.
+Before building larger and more complex components with regular HTML syntax, check if any of the [angular material components](https://material.angular.io/components/categories) fit. You will have to do less styling and it will be easier.
 
 ## Styling
 
