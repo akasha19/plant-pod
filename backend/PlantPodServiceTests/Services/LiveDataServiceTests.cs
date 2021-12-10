@@ -3,24 +3,25 @@ using FluentAssertions;
 using NUnit.Framework;
 using PlantPodService.Services;
 using System;
+using System.Collections.Immutable;
 using PlantPodService.Model;
 
 namespace PlantPodServiceTests.Services
 {
     [TestFixture]
-    class LiveDataServiceTests
+    public class LiveDataServiceTests
     {
         protected ILiveDataService Sut;
-        protected ISensorsService SensorsService = A.Fake<SensorsService>(options => options.Strict());
+        protected ISensorsService SensorsService = A.Fake<ISensorsService>(options => options.Strict());
         protected Guid ValidSensorId = Guid.NewGuid();
         protected Guid ValidSensorIdTwo = Guid.NewGuid();
 
-        LiveDataServiceTests()
+        public LiveDataServiceTests()
         {
             A.
                 CallTo(() => SensorsService.GetSensors())
                 .Returns(new [] { new Sensor() { Id = ValidSensorId }, new Sensor() { Id = ValidSensorIdTwo } });
-            Sut = new LiveDataService();
+            Sut = new LiveDataService(SensorsService);
         }
 
         [Test]
@@ -48,7 +49,7 @@ namespace PlantPodServiceTests.Services
         {
             var result = Sut.GetSensorData();
 
-            result.Should().BeOfType<SensorData[]>().And.NotBeEmpty();
+            result.Should().BeOfType<ImmutableList<SensorData>>().And.NotBeEmpty();
         }
 
         [Test]
@@ -71,7 +72,7 @@ namespace PlantPodServiceTests.Services
 
             var result = Sut.GetSensorData();
 
-            result.Should().BeSameAs(new[] { data, dataTwo });
+            result.Should().BeEquivalentTo(new[] { data, dataTwo });
         }
 
         [Test]
