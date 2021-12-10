@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlantPodService.Model;
+using PlantPodService.ViewModel;
 
 namespace PlantPodService.Controllers
 {

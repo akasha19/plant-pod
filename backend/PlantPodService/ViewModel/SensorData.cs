@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlantPodService.Model
+namespace PlantPodService.ViewModel
 {
     public sealed class SensorData
     {

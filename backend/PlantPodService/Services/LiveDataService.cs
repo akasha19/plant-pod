@@ -1,4 +1,4 @@
-﻿using PlantPodService.Model;
+﻿using PlantPodService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -14,7 +14,7 @@ namespace PlantPodService.Services
         public SensorData GetSensorDataById(Guid id);
     }
 
-    public class LiveDataService : ILiveDataService
+    internal sealed class LiveDataService : ILiveDataService
     {
         private readonly Dictionary<Guid, SensorData> _sensorData = new Dictionary<Guid, SensorData>();
 
@@ -43,6 +43,7 @@ namespace PlantPodService.Services
                 throw new InvalidOperationException("unknown id");
             }
 
+            // ReSharper disable once PossibleInvalidOperationException
             _sensorData[(Guid)data.SensorId] = data;
         }
     }

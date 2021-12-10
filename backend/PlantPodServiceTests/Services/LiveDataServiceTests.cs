@@ -5,6 +5,7 @@ using PlantPodService.Services;
 using System;
 using System.Collections.Immutable;
 using PlantPodService.Model;
+using PlantPodService.ViewModel;
 
 namespace PlantPodServiceTests.Services
 {
