@@ -1,18 +1,21 @@
 @use '@angular/material' as mat;
+@include mat.core();
+@import './colors.scss';
 
-$light_blue: #81C9C4;
-$dark_blue: #5BBDB5;
-
-$light_green: #C2CC73;
-$dark_green: #AAC031;
-
-$light_purple: #BBBBDF;
-$dark_purple: #AAA3D0;
-
-$background: #F9F9F3;
-$text: #282828;
+$plant-pod-companion-theme-green: mat.define-palette($green-palette, $dark_green);
+$plant-pod-companion-theme-blue: mat.define-palette($blue-palette, $dark_blue);
 
 $plant-pod-companion-warn: mat.define-palette(mat.$red-palette);
+
+$plant-pod-companion-theme: mat.define-light-theme((
+  color: (
+    primary: $plant-pod-companion-theme-green,
+    accent: $plant-pod-companion-theme-blue,
+    warn: $plant-pod-companion-warn,
+  )
+));
+
+@include mat.all-component-themes($plant-pod-companion-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

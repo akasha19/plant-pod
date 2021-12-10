@@ -1,0 +1,69 @@
+$light_green: #cadf72;
+$dark_green: #abc031;
+
+$light_blue: #88d0cb;
+$dark_blue: #5bbdb5;
+
+$light_purple: #BBBBDF;
+$dark_purple: #AAA3D0;
+
+$background: #F9F9F3;
+$text: #282828;
+
+$green-palette: (
+ 50: #f6fae6,
+ 100: #e8f1c1,
+ 200: #d9e89a,
+ 300: $light_green,
+ 400: #c0d855,
+ 500: #b6d237,
+ 600: $dark_green,
+ 700: #9baa29,
+ 800: #8b9421,
+ 900: #716e14,
+ contrast: (
+        50: $text,
+        100: $text,
+        200: $text,
+        300: $text,
+        400: $text,
+        500: $background,
+        600: $background,
+        700: $background,
+        800: $background,
+        900: $background,
+        A100: $text,
+        A200: $text,
+        A400: $text,
+        A700: $background,
+    )
+);
+
+$blue-palette: (
+ 50: #e2f3f3,
+ 100: #b7e2df,
+ 200: $light_blue,
+ 300: $dark_blue,
+ 400: #3daea4,
+ 500: #299f93,
+ 600: #269286,
+ 700: #228175,
+ 800: #1f7166,
+ 900: #175549,
+ contrast: (
+        50: $text,
+        100: $text,
+        200: $text,
+        300: $text,
+        400: $text,
+        500: $background,
+        600: $background,
+        700: $background,
+        800: $background,
+        900: $background,
+        A100: $text,
+        A200: $text,
+        A400: $text,
+        A700: $background,
+    )
+);
