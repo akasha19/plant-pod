@@ -1,11 +1,12 @@
-using backend.model;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using PlantPodService.Controllers;
+using PlantPodService.Model;
 
-namespace PlantPodServiceTests
+namespace PlantPodServiceTests.Controllers
 {
+    [TestFixture]
     public class SensorsControllerTests
     {
         [Test]

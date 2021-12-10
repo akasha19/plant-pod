@@ -1,5 +1,5 @@
-﻿using backend.model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PlantPodService.Model;
 
 namespace PlantPodService.Controllers
 {
