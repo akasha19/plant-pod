@@ -1,0 +1,32 @@
+<mat-card class= "main-card title" ><mat-card-title>Plantpedia</mat-card-title></mat-card>
+<div *ngFor="let plant of plants">
+  <mat-card class="main-card">
+    <mat-card-header>
+      <img mat-card-avatar src={{plant.imgsrc}}>
+      <mat-card-title>{{plant.shortname}}</mat-card-title>
+      <mat-card-subtitle>{{plant.longname}}</mat-card-subtitle>
+
+    </mat-card-header>
+    <mat-card-content>
+      <div class="infocontainer">
+          <button mat-flat-button color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+            matTooltip="{{maxtempWarn}}">+{{plant.maxtemp}}&deg; C</button>
+          <button mat-flat-button color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+            matTooltip="{{mintempWarn}}">-{{plant.mintemp}}&deg; C</button>
+          <button mat-flat-button color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+            matTooltip="{{maxphWarn}}">
+            +pH: {{plant.maxph}}</button>
+          <button mat-flat-button color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+            matTooltip="{{minphWarn}}">-pH: {{plant.minph}}</button>
+      </div>
+      <mat-card class="text-card">
+        <mat-card-title>Description</mat-card-title>
+        {{plant.description}}
+      </mat-card>
+      <mat-card class="text-card">
+        <mat-card-title>Care</mat-card-title>
+        {{plant.care}}
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

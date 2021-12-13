@@ -1,0 +1,47 @@
+@import '../app.component.scss';
+
+
+.text-card {
+    max-width: 780px;
+    margin-bottom: 10px;
+    background-color: $extra_bg;
+ }
+
+.small-card{
+    width: 40%;
+    max-width: 370px;
+    margin-bottom: 10px;
+    background-color: $extra_bg;
+    position:absolute;
+    right:16px;
+}
+.mat-card-header{
+  margin-right:0px;
+}
+
+.infocontainer{
+  padding: 0px;
+  overflow:auto;
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+
+}
+
+.mat-flat-button{
+  margin-bottom:10px;
+  width: 25%;
+  min-width:100px;
+  max-width:150px;
+  margin-left:5px;
+  margin-right:5px;
+}
+.longtext{
+  display:inline-block;
+}
+
+.shorttext{
+  display:none;
+}

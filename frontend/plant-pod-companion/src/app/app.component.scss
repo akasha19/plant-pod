@@ -1,0 +1,32 @@
+@import "../styles.scss";
+
+.toolbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: $dark_green;
+    color: white;
+    font-weight: 600;
+}
+
+.main-card {
+    max-width: 800px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.main-card.title {
+    background-color: $light_green;
+    text-align: center;
+    color: white;
+}
+.content {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
