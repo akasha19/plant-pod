@@ -2,7 +2,6 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using PlantPodService.Controllers;
-using PlantPodService.Model;
 using PlantPodService.ViewModel;
 
 namespace PlantPodServiceTests.Controllers

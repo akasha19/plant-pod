@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PlantPodService.Services
 {
-    internal interface ISensorsService
+    public interface ISensorsService
     {
         public IEnumerable<Sensor> GetSensors();
 

@@ -14,7 +14,7 @@ namespace PlantPodService.Services
         public SensorData GetSensorDataById(Guid id);
     }
 
-    internal sealed class LiveDataService : ILiveDataService
+    public sealed class LiveDataService : ILiveDataService
     {
         private readonly Dictionary<Guid, SensorData> _sensorData = new Dictionary<Guid, SensorData>();
 
@@ -31,7 +31,7 @@ namespace PlantPodService.Services
             return _sensorData.Values.ToImmutableList();
         }
 
-        public SensorData GetSensorDataById(Guid id)
+        public SensorData? GetSensorDataById(Guid id)
         {
             return _sensorData[id];
         }
