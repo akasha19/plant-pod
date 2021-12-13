@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,10 +25,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule,
     RouterModule.forRoot([
       {
-    path: 'plantpedia',
-    component: PlantpediaPageComponent
-    }
-  ])
+        path: 'plantpedia',
+        component: PlantpediaPageComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
