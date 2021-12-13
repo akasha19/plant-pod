@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using PlantPodService.Controllers;
 
-namespace PlantPodServiceTests
+namespace PlantPodServiceTests.Controllers
 {
     public class SensorsControllerTests
     {
