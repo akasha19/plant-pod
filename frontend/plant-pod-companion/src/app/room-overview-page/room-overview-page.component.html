@@ -1,0 +1,27 @@
+<mat-card class="main-card title">
+  <mat-card-title>Room overview</mat-card-title>
+</mat-card>
+<div *ngFor="let Room of rooms">
+  <mat-card class="main-card">
+    <mat-card-header>
+          <mat-card-title class="title">{{ Room.roomName }}</mat-card-title>
+          <mat-card-title>Description</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="info-container">
+
+        <mat-card class="text-card">
+
+        <img mat-card src="{{Room.imageSource}}" class="small-image horizontal_line" >
+
+        <div class="btn-group horizontal_line">
+            <button mat-flat-button>plant info</button>
+
+            <button mat-flat-button>room info</button>
+        </div>
+
+        </mat-card>
+
+
+    </div>
