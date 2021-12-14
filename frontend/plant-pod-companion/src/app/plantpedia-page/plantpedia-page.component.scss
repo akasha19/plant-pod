@@ -1,32 +1,22 @@
 @import '../app.component.scss';
 
-.text-card {
-    max-width: 50rem;
-    margin-bottom: 1rem;
-    // Todo: rename
-    background-color: $extra_bg;
-    // .mat-card-title {
-    //   margin-bottom: 0.5rem;
-    // }
- }
+
 
 .mat-card-header{
-  margin-right: 0px;
+  margin-right: 0rem;
 }
 
 .info-container{
   overflow: auto;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .mat-flat-button{
-  margin-bottom: 0.5rem;
-  width: 25%;
-  min-width: 5rem,;
-  max-width: 10rem;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  width: 15%;
+  max-width: 20rem;
+  min-width: 5rem
 }

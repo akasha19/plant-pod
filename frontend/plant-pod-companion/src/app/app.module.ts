@@ -9,11 +9,13 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlantpediaPageComponent
+    PlantpediaPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,11 +25,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatTooltipModule,
     MatToolbarModule,
+    MatGridListModule,
     RouterModule.forRoot([
       {
         path: 'plantpedia',
         component: PlantpediaPageComponent
-      }
+      },
     ])
   ],
   providers: [],

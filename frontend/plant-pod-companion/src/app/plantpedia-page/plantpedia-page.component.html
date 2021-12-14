@@ -12,18 +12,24 @@
     <mat-card-content>
       <div class="info-container">
         <button mat-flat-button color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-          matTooltip="{{maxTemperatureWarn}}">+{{ plant.maxTemperature }}&deg; C</button>
+          matTooltip="{{maxTemperatureWarn}}">  +{{ plant.maxTemperature }}&deg; C</button>
 
         <button mat-flat-button color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-          matTooltip="{{minTemperatureWarn}}">-{{plant.minTemperature}}&deg; C</button>
+          matTooltip="{{minTemperatureWarn}}">  -{{ plant.minTemperature }}&deg; C</button>
 
         <button mat-flat-button color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-          matTooltip="{{maxphWarn}}">
-          +pH: {{plant.maxph}}</button>
+          matTooltip="{{maxphWarn}}">           +pH: {{ plant.maxph }}</button>
 
         <button mat-flat-button color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-          matTooltip="{{minphWarn}}">-pH: {{plant.minph}}</button>
+          matTooltip="{{minphWarn}}">           -pH: {{ plant.minph }}</button>
+
+        <button mat-flat-button color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+          matTooltip="{{maxHumidityWarn}}">           +RH: {{ plant.maxHumidity }}%</button>
+
+        <button mat-flat-button color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+          matTooltip="{{minHumidityWarn}}">           -RH: {{ plant.minHumidity }}%</button>
       </div>
+
       <mat-card class="text-card">
         <mat-card-title>Description</mat-card-title>
         {{ plant.description }}
