@@ -18,6 +18,7 @@ export class PlantpediaPageComponent implements OnInit {
   readonly minHumidityWarn = "(Minimum Relative Humidity) When the humidity is too low, the plant could dry out an eventually die. The humidity could be increased by using a humidifier or by placing a bowl filled with water on a heating source near the plant.";
   readonly maxHumidityWarn = "(Maximum Relative Humidity) Too high relative humidity could lead to fungi or bacteria on the plant. Lowering the humidity can be done by using a dehumidifier, or opening a window on a dry day.";
 
+
   ngOnInit(): void {
     this.plants = [
       {
@@ -32,7 +33,8 @@ export class PlantpediaPageComponent implements OnInit {
         maxph: 6.5,
         minHumidity: 50,
         maxHumidity: 100,
-        imageSource: "assets/img/bananaplant.jpg"
+        imageSource: "assets/img/bananaplant.jpg",
+        moisture: "Moist" 
       },
       {
         id: 2,
@@ -46,7 +48,8 @@ export class PlantpediaPageComponent implements OnInit {
         maxph: 7,
         minHumidity: 35,
         maxHumidity: 45,
-        imageSource: "assets/img/zzplant.jpg"
+        imageSource: "assets/img/zzplant.jpg",
+        moisture: "Dry",
       },
       {
         id: 3,
@@ -60,7 +63,9 @@ export class PlantpediaPageComponent implements OnInit {
         maxph: 8.5,
         minHumidity: 10,
         maxHumidity: 70,
-        imageSource: "assets/img/aloevera.jpg"
+        imageSource: "assets/img/aloevera.jpg",
+        moisture: "Normal"
+        
       },
       {
         id: 4,
@@ -74,7 +79,9 @@ export class PlantpediaPageComponent implements OnInit {
         maxph: 6.5,
         minHumidity: 50,
         maxHumidity: 100,
-        imageSource: "assets/img/luckybamboo.jpg"
+        imageSource: "assets/img/luckybamboo.jpg",
+        moisture:"Wet"
+        
       },
       {
         id: 5,
@@ -88,7 +95,9 @@ export class PlantpediaPageComponent implements OnInit {
         maxph: 7,
         minHumidity: 50,
         maxHumidity: 75,
-        imageSource: "assets/img/pancakeplant.jpg"
+        imageSource: "assets/img/pancakeplant.jpg",
+        moisture:"Normal"
+        
       }
     ]
   }

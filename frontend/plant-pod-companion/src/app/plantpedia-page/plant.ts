@@ -1,3 +1,5 @@
+import { NumberValueAccessor } from "@angular/forms";
+
 export interface Plant {
     id: number;
     longName: string;
@@ -11,4 +13,5 @@ export interface Plant {
     minHumidity: number;
     maxHumidity: number;
     imageSource: string;
+    moisture: string;
 }
