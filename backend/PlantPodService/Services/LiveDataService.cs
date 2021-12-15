@@ -23,7 +23,7 @@ namespace PlantPodService.Services
         {
             foreach (var sensorId in roomsService.GetSensorIds())
             {
-                _sensorData.Add(sensorId, new Sensor());
+                _sensorData.Add(sensorId, new Sensor() {Id = sensorId});
             }
         }
 

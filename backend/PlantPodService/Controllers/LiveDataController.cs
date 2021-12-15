@@ -4,7 +4,9 @@ using System;
 
 namespace PlantPodService.Controllers
 {
-    public class LiveDataController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class LiveDataController : ControllerBase
     {
         private readonly ILiveDataService _liveDataService;
 
@@ -14,13 +16,15 @@ namespace PlantPodService.Controllers
         }
 
         [HttpGet]
+        [Route("")]
         public IActionResult GetLiveData()
         {
             return new OkObjectResult(_liveDataService.GetSensorData());
         }
 
         [HttpGet]
-        public IActionResult GetLiveDataById([FromQuery]Guid id)
+        [Route("{id}")]
+        public IActionResult GetLiveDataById([FromRoute(Name = "id")] Guid id)
         {
             var data = _liveDataService.GetSensorDataById(id);
             if (data == null)

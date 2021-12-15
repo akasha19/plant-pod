@@ -46,6 +46,16 @@ namespace PlantPodServiceTests.Services
         }
 
         [Test]
+        public void SetSensorData_ShouldThrowWhenSensorIdIsNull()
+        {
+            var data = new Sensor();
+
+            Action act = () => Sut.SetSensorData(data);
+
+            act.Should().Throw<InvalidOperationException>();
+        }
+
+        [Test]
         public void GetSensorData_ShouldReturnSensorData()
         {
             var result = Sut.GetSensorData();
