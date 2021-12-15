@@ -13,6 +13,5 @@ namespace PlantPodService.ViewModel
         public decimal? Temperature { get; set; }
 
         public decimal? Moisture { get; set; }
-
     }
 }

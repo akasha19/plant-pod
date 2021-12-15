@@ -20,8 +20,8 @@ namespace PlantPodServiceTests.Services
         public LiveDataServiceTests()
         {
             A.
-                CallTo(() => RoomsService.GetRooms())
-                .Returns(new [] { new PlantPodService.Model.Room() { Id = ValidSensorId }, new PlantPodService.Model.Room() { Id = ValidSensorIdTwo } });
+                CallTo(() => RoomsService.GetSensorIds())
+                .Returns(new [] { ValidSensorId, ValidSensorIdTwo }.ToImmutableArray());
             Sut = new LiveDataService(RoomsService);
         }
 
