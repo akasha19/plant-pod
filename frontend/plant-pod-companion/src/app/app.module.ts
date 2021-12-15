@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PlantpediaPageComponent } from './plantpedia-page/plantpedia-page.component';
+import { RoomOverviewPageComponent } from './room-overview-page/room-overview-page.component';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +14,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
-    PlantpediaPageComponent
+    PlantpediaPageComponent,
+    RoomOverviewPageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
       {
         path: 'plantpedia',
         component: PlantpediaPageComponent
+      },
+      {
+        path: 'room-overview',
+        component: RoomOverviewPageComponent
       }
     ])
   ],
