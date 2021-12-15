@@ -2,49 +2,63 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using PlantPodService.Services.Persistence;
 
 namespace PlantPodService.Services
 {
     public interface ILiveDataService
     {
-        public void SetSensorData(SensorData data);
 
-        public IImmutableList<SensorData> GetSensorData();
+        public void SetSensorData(Sensor data);
 
-        public SensorData GetSensorDataById(Guid id);
+
+        public IImmutableList<Sensor> GetSensorData();
+
+
+        public Sensor GetSensorDataById(Guid id);
     }
+
 
     public sealed class LiveDataService : ILiveDataService
     {
-        private readonly Dictionary<Guid, SensorData> _sensorData = new Dictionary<Guid, SensorData>();
 
-        public LiveDataService(ISensorsService sensorsService)
+        private readonly Dictionary<Guid, Sensor> _sensorData = new Dictionary<Guid, Sensor>();
+
+
+        public LiveDataService(IRoomsService roomsService)
         {
-            foreach (var sensor in sensorsService.GetSensors())
+
+            foreach (var sensor in roomsService.GetRooms())
             {
-                _sensorData.Add(sensor.Id, new SensorData());
+
+                _sensorData.Add(sensor.Id, new Sensor());
             }
         }
 
-        public IImmutableList<SensorData> GetSensorData()
+
+        public IImmutableList<Sensor> GetSensorData()
         {
             return _sensorData.Values.ToImmutableList();
         }
 
-        public SensorData? GetSensorDataById(Guid id)
+
+        public Sensor GetSensorDataById(Guid id)
         {
             return _sensorData[id];
         }
 
-        public void SetSensorData(SensorData data)
+
+        public void SetSensorData(Sensor data)
         {
-            if (data.SensorId != null && !_sensorData.ContainsKey((Guid)data.SensorId))
+
+            if (data.Id != null && !_sensorData.ContainsKey((Guid)data.Id))
             {
                 throw new InvalidOperationException("unknown id");
             }
 
             // ReSharper disable once PossibleInvalidOperationException
-            _sensorData[(Guid)data.SensorId] = data;
+
+            _sensorData[(Guid)data.Id] = data;
         }
     }
 }

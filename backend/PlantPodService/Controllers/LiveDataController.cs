@@ -27,10 +27,8 @@ namespace PlantPodService.Controllers
             {
                 return BadRequest($"No sensor with the id {id} found.");
             }
-            else
-            {
-                return new OkObjectResult(data);
-            }
+            
+            return new OkObjectResult(data);
         }
     }
 }

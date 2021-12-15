@@ -17,21 +17,21 @@ namespace PlantPodServiceTests.Controllers
 
     private readonly LiveDataController _sut;
     private readonly ILiveDataService _liveDataService = A.Fake<ILiveDataService>(options => options.Strict());
-    private readonly Guid _validSensorId = Guid.NewGuid();
-    private readonly Guid _invalidSensorId = Guid.NewGuid();
+    private readonly Guid _validId = Guid.NewGuid();
+    private readonly Guid _invalidId = Guid.NewGuid();
 
     public LiveDataControllerTests()
     {
         A
             .CallTo(() => _liveDataService.GetSensorData())
-            .Returns(SensorData);
+            .Returns(Sensor);
 
         A
-            .CallTo(() => _liveDataService.GetSensorDataById(_validSensorId))
-            .Returns(SingleSensorData);
+            .CallTo(() => _liveDataService.GetSensorDataById(_validId))
+            .Returns(SingleSensor);
 
         A
-            .CallTo(() => _liveDataService.GetSensorDataById(_invalidSensorId))
+            .CallTo(() => _liveDataService.GetSensorDataById(_invalidId))
             .Returns(null);
 
             _sut = new LiveDataController(_liveDataService);
@@ -51,13 +51,13 @@ namespace PlantPodServiceTests.Controllers
             var result = _sut.GetLiveData();
 
             result.Should().NotBeNull();
-            result.Should().BeEquivalentTo(new OkObjectResult(SensorData));
+            result.Should().BeEquivalentTo(new OkObjectResult(Sensor));
         }
 
         [Test]
         public void GetLiveDataById_ReturnsStatusCodeOk()
         {
-            var result = _sut.GetLiveDataById(_validSensorId);
+            var result = _sut.GetLiveDataById(_validId);
 
             result.Should().BeOfType<OkObjectResult>();
         }
@@ -65,39 +65,39 @@ namespace PlantPodServiceTests.Controllers
         [Test]
         public void GetLiveDataById_ReturnsData()
         {
-            var result = _sut.GetLiveDataById(_validSensorId);
+            var result = _sut.GetLiveDataById(_validId);
 
             result.Should().NotBeNull();
-            result.Should().BeEquivalentTo(new OkObjectResult(SingleSensorData));
+            result.Should().BeEquivalentTo(new OkObjectResult(SingleSensor));
         }
 
         [Test]
-        public void GetLiveDataById_ReturnsBadRequestOnInvalidSensorId()
+        public void GetLiveDataById_ReturnsBadRequestOnInvalidId()
         {
-            var result = _sut.GetLiveDataById(_invalidSensorId);
+            var result = _sut.GetLiveDataById(_invalidId);
 
             result.Should().NotBeNull();
             result.Should().BeEquivalentTo(new BadRequestResult());
         }
 
 
-        private ImmutableList<SensorData> SensorData => new List<SensorData>()
+        private ImmutableList<Sensor> Sensor => new List<Sensor>()
         {
-            new SensorData()
+            new Sensor()
             {
-                SensorId = Guid.Parse("6077a31f-9d8c-4d47-b4a7-5ad9b3163b8e"),
+                Id = Guid.Parse("6077a31f-9d8c-4d47-b4a7-5ad9b3163b8e"),
                 Temperature = 13.5m
             },
-            new SensorData()
+            new Sensor()
             {
-                SensorId = Guid.Parse("9b901beb-8928-44e9-a5f1-08ef83907673"),
+                Id = Guid.Parse("9b901beb-8928-44e9-a5f1-08ef83907673"),
                 Temperature = 16.5m
             }
         }.ToImmutableList();
 
-        private SensorData SingleSensorData => new SensorData()
+        private Sensor SingleSensor => new Sensor()
         {
-            SensorId = _validSensorId,
+            Id = _validId,
             Temperature = 12.8m
         };
     }

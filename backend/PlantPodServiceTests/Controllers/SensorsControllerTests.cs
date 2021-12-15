@@ -13,7 +13,7 @@ namespace PlantPodServiceTests.Controllers
         public void ReceiveSensorData_ReturnsNoContentResult()
         {
             var sut = new SensorsController();
-            var data = new SensorData();
+            var data = new Sensor();
 
             var result = sut.ReceiveSensorData(data);
 
