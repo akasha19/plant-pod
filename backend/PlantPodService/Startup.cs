@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PlantPodService.Services;
+using PlantPodService.Services.Persistence;
 
 namespace PlantPodService
 {
@@ -19,6 +21,8 @@ namespace PlantPodService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<ILiveDataService, LiveDataService>();
+            services.AddSingleton<IRoomsService, RoomsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

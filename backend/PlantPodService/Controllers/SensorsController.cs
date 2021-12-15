@@ -1,5 +1,5 @@
-﻿using backend.model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PlantPodService.ViewModel;
 
 namespace PlantPodService.Controllers
 {
@@ -8,7 +8,7 @@ namespace PlantPodService.Controllers
     public class SensorsController : ControllerBase
     {
         [HttpPost]
-        public IActionResult ReceiveSensorData([FromBody] SensorData data)
+        public IActionResult ReceiveSensorData([FromBody] Sensor data)
         {
             return new NoContentResult();
         }
