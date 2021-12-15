@@ -1,11 +1,8 @@
-﻿using FakeItEasy;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
-using PlantPodService.Services;
 using PlantPodService.Services.Persistence;
 using System;
 using System.Collections.Immutable;
-using Sensor = PlantPodService.ViewModel.Sensor;
 
 namespace PlantPodServiceTests.Services.Persistence
 {

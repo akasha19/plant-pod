@@ -34,7 +34,15 @@ namespace PlantPodService.Services
 
         public Sensor GetSensorDataById(Guid id)
         {
-            return _sensorData[id];
+            try
+            {
+                var data = _sensorData[id];
+                return data;
+            }
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
         }
 
         public void SetSensorData(Sensor data)
