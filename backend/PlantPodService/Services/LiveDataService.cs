@@ -21,9 +21,9 @@ namespace PlantPodService.Services
 
         public LiveDataService(IRoomsService roomsService)
         {
-            foreach (var room in roomsService.GetRooms())
+            foreach (var sensorId in roomsService.GetSensorIds())
             {
-                _sensorData.Add(room.SensorId, new Sensor());
+                _sensorData.Add(sensorId, new Sensor());
             }
         }
 
