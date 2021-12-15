@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PlantPodService.Model;
 using PlantPodService.ViewModel;
-using Sensor = PlantPodService.ViewModel.Sensor;
 
 namespace PlantPodService.Controllers
 {

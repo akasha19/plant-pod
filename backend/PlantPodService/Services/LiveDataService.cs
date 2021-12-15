@@ -21,9 +21,9 @@ namespace PlantPodService.Services
 
         public LiveDataService(IRoomsService roomsService)
         {
-            foreach (var sensor in roomsService.GetRooms())
+            foreach (var room in roomsService.GetRooms())
             {
-                _sensorData.Add(sensor.Id, new Sensor());
+                _sensorData.Add(room.SensorId, new Sensor());
             }
         }
 
@@ -39,12 +39,15 @@ namespace PlantPodService.Services
 
         public void SetSensorData(Sensor data)
         {
-            if (data.Id != null && !_sensorData.ContainsKey((Guid)data.Id))
+            if (data.Id == null)
+            {
+                throw new InvalidOperationException("id cannot be null");
+            }
+            if (!_sensorData.ContainsKey((Guid)data.Id))
             {
                 throw new InvalidOperationException("unknown id");
             }
 
-            // ReSharper disable once PossibleInvalidOperationException
             _sensorData[(Guid)data.Id] = data;
         }
     }
