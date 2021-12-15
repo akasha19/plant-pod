@@ -1,69 +1,79 @@
 @import '../app.component.scss';
 
-.text-card {
-    max-width: 50rem;
-    margin-bottom: 1rem;
-    // Todo: rename
-    background-color: $extra_bg;
-    // .mat-card-title {
-    //   margin-bottom: 0.5rem;
-    // }
- }
 
 .mat-card-header{
-  margin-right: 0px;
 
-}
-
-.small-image{
-  width:10rem;
-  height:7rem;
-}
-
-.title {
-  text-align:center;
-  width:100%;
 }
 
 .info-container{
   overflow: auto;
-  width: auto;
-  display: flex;
+  width: 50rem;
+  display: contents;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.flex {
-  display: flex;
-  justify-content: center;
-}
-
-
-
-.btn-group button {
-  background-color: #CADF72; /* Green background */
+.mat-flat-button{
   margin-bottom: 0.5rem;
   width: 25%;
   min-width: 5rem,;
   max-width: 10rem;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-  color: white; /* White text */
-  padding: 0.5rem 0rem; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 50%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
-}
-
-.btn-group button:not(:last-child) {
-  border-bottom: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: #AAC031;
 }
 
 .horizontal_line{
-  float:left;
+display: block;
+margin:2rem;
+color:white;
+background-color: #CADF72;
+}
+
+.horizontal_line:hover{
+  background-color: #AAC031;
+}
+
+.title{
+
+}
+
+.paragraph{
+  font-size: 1rem;
+}
+.img{
+  width:15rem;
+  height:10rem;
+
+}
+.text-card {
+    max-width: 60rem;
+    height:12rem;
+    background-color: $extra_bg;
+ }
+
+
+.text-card-item{
+  width:20rem;
+  height:10rem;
+  padding: 1rem;
+  text-align: center;
+
+}
+
+
+
+
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.center {
+  justify-content: center;
+}
+.center li {
+  background: deepskyblue;
 }
