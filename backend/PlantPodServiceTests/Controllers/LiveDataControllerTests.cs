@@ -12,30 +12,29 @@ using System.Collections.Immutable;
 namespace PlantPodServiceTests.Controllers
 {
     [TestFixture]
-    public sealed class LiveDataControllerTests
+    public class LiveDataControllerTests
     {
+        private readonly LiveDataController _sut;
+        private readonly ILiveDataService _liveDataService = A.Fake<ILiveDataService>(options => options.Strict());
+        private readonly Guid _validId = Guid.NewGuid();
+        private readonly Guid _invalidId = Guid.NewGuid();
 
-    private readonly LiveDataController _sut;
-    private readonly ILiveDataService _liveDataService = A.Fake<ILiveDataService>(options => options.Strict());
-    private readonly Guid _validId = Guid.NewGuid();
-    private readonly Guid _invalidId = Guid.NewGuid();
+        public LiveDataControllerTests()
+        {
+            A
+                .CallTo(() => _liveDataService.GetSensorData())
+                .Returns(Sensor);
 
-    public LiveDataControllerTests()
-    {
-        A
-            .CallTo(() => _liveDataService.GetSensorData())
-            .Returns(Sensor);
+            A
+                .CallTo(() => _liveDataService.GetSensorDataById(_validId))
+                .Returns(SingleSensor);
 
-        A
-            .CallTo(() => _liveDataService.GetSensorDataById(_validId))
-            .Returns(SingleSensor);
+            A
+                .CallTo(() => _liveDataService.GetSensorDataById(_invalidId))
+                .Returns(null);
 
-        A
-            .CallTo(() => _liveDataService.GetSensorDataById(_invalidId))
-            .Returns(null);
-
-            _sut = new LiveDataController(_liveDataService);
-    }
+                _sut = new LiveDataController(_liveDataService);
+        }
 
         [Test]
         public void GetLiveData_ReturnsStatusCodeOk()
