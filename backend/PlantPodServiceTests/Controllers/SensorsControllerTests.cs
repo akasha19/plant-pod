@@ -2,7 +2,6 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using PlantPodService.Controllers;
-using PlantPodService.Model;
 using PlantPodService.ViewModel;
 
 namespace PlantPodServiceTests.Controllers
@@ -14,7 +13,7 @@ namespace PlantPodServiceTests.Controllers
         public void ReceiveSensorData_ReturnsNoContentResult()
         {
             var sut = new SensorsController();
-            var data = new SensorData();
+            var data = new Sensor();
 
             var result = sut.ReceiveSensorData(data);
 

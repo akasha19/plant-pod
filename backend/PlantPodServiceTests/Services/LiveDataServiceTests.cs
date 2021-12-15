@@ -2,10 +2,10 @@
 using FluentAssertions;
 using NUnit.Framework;
 using PlantPodService.Services;
+using PlantPodService.Services.Persistence;
 using System;
 using System.Collections.Immutable;
-using PlantPodService.Model;
-using PlantPodService.ViewModel;
+using Sensor = PlantPodService.ViewModel.Sensor;
 
 namespace PlantPodServiceTests.Services
 {
@@ -13,22 +13,22 @@ namespace PlantPodServiceTests.Services
     public class LiveDataServiceTests
     {
         protected ILiveDataService Sut;
-        protected ISensorsService SensorsService = A.Fake<ISensorsService>(options => options.Strict());
+        protected IRoomsService RoomsService = A.Fake<IRoomsService>(options => options.Strict());
         protected Guid ValidSensorId = Guid.NewGuid();
         protected Guid ValidSensorIdTwo = Guid.NewGuid();
 
         public LiveDataServiceTests()
         {
             A.
-                CallTo(() => SensorsService.GetSensors())
-                .Returns(new [] { new Sensor() { Id = ValidSensorId }, new Sensor() { Id = ValidSensorIdTwo } });
-            Sut = new LiveDataService(SensorsService);
+                CallTo(() => RoomsService.GetRooms())
+                .Returns(new [] { new PlantPodService.Model.Room() { Id = ValidSensorId }, new PlantPodService.Model.Room() { Id = ValidSensorIdTwo } });
+            Sut = new LiveDataService(RoomsService);
         }
 
         [Test]
         public void SetSensorData_ShouldNotThrowOnValidValues()
         {
-            var data = new SensorData() {SensorId = ValidSensorId, Temperature = 25.5m };
+            var data = SensorData(null);
 
             Action act = () => Sut.SetSensorData(data);
 
@@ -38,7 +38,7 @@ namespace PlantPodServiceTests.Services
         [Test]
         public void SetSensorData_ShouldThrowWhenReceivingDataFromUnknownSensor()
         {
-            var data = new SensorData() { SensorId = Guid.NewGuid(), Temperature = 25.5m };
+            var data = SensorData(Guid.NewGuid());
 
             Action act = () => Sut.SetSensorData(data);
 
@@ -50,7 +50,7 @@ namespace PlantPodServiceTests.Services
         {
             var result = Sut.GetSensorData();
 
-            result.Should().BeOfType<ImmutableList<SensorData>>().And.NotBeEmpty();
+            result.Should().BeOfType<ImmutableList<Sensor>>().And.NotBeEmpty();
         }
 
         [Test]
@@ -64,10 +64,10 @@ namespace PlantPodServiceTests.Services
         [Test]
         public void GetSensorData_ShouldReturnNewestSensorDataForAllSensors()
         {
-            var data = new SensorData() { SensorId = ValidSensorId, Temperature = 13.3m };
-            var dataTwo = new SensorData() { SensorId = ValidSensorIdTwo, Temperature = 14.3m };
-            Sut.SetSensorData(new SensorData { SensorId = ValidSensorId, Temperature = 24.6m });
-            Sut.SetSensorData(new SensorData { SensorId = ValidSensorIdTwo, Temperature = 25.6m });
+            var data = new Sensor { Id = ValidSensorId, Temperature = 13.3m, Humidity = 53.4m, Moisture = 49.2m, Ph = 4.3m };
+            var dataTwo = new Sensor { Id = ValidSensorIdTwo, Temperature = 23.3m, Humidity = 43.7m, Moisture = 43.7m, Ph = 5.8m };
+            Sut.SetSensorData(SensorData(ValidSensorId));
+            Sut.SetSensorData(SensorData(ValidSensorIdTwo));
             Sut.SetSensorData(data);
             Sut.SetSensorData(dataTwo);
 
@@ -81,19 +81,28 @@ namespace PlantPodServiceTests.Services
         {
             var result = Sut.GetSensorDataById(ValidSensorId);
 
-            result.Should().BeOfType<SensorData>();
+            result.Should().BeOfType<Sensor>();
         }
 
         [Test]
         public void GetSensorDataById_ShouldReturnNewestSensorData()
         {
-            var data = new SensorData() { SensorId = ValidSensorId, Temperature = 13.3m };
-            Sut.SetSensorData(new SensorData { SensorId = ValidSensorId, Temperature = 24.6m });
+            var data = new Sensor { Id = ValidSensorId, Temperature = 22.3m, Humidity = 38.7m, Moisture = 58.7m, Ph = 6.8m };
+            Sut.SetSensorData(SensorData(null));
             Sut.SetSensorData(data);
 
             var result = Sut.GetSensorDataById(ValidSensorId);
 
             result.Should().BeSameAs(data);
         }
+
+        private Sensor SensorData(Guid? id) => new Sensor()
+        {
+            Id = id ?? ValidSensorId,
+            Temperature = 25.5m,
+            Humidity = 40.3m,
+            Moisture = 53.7m,
+            Ph = 7.5m
+        };
     }
 }

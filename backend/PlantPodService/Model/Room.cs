@@ -2,8 +2,10 @@
 
 namespace PlantPodService.Model
 {
-    internal sealed class Sensor
+    public sealed class Room
     {
         public Guid Id { get; set; }
+
+        public Guid SensorId { get; set; }
     }
 }
