@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PlantPodService.model
+namespace PlantPodService.Model
 {
     public class PlantEntity
     {

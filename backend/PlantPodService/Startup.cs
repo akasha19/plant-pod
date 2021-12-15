@@ -1,11 +1,13 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PlantPodService.model;
+using PlantPodService.Model;
+using PlantPodService.Services;
+using PlantPodService.Services.Persistence;
+using System;
 
 namespace PlantPodService
 {
@@ -22,13 +24,13 @@ namespace PlantPodService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+			services.AddSingleton<ILiveDataService, LiveDataService>();
+            services.AddSingleton<IRoomsService, RoomsService>();
 
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
             services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlite($"Data Source={System.IO.Path.Join(path, Configuration.GetConnectionString("PlantPodDatabase"))}"));
-        }
+                options.UseSqlite($"Data Source={System.IO.Path.Join(path, Configuration.GetConnectionString("PlantPodDatabase"))}"));        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

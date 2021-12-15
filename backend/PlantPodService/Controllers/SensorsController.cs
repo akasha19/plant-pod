@@ -1,5 +1,7 @@
-﻿using backend.model;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using PlantPodService.Services;
+using PlantPodService.ViewModel;
 
 namespace PlantPodService.Controllers
 {
@@ -7,10 +9,25 @@ namespace PlantPodService.Controllers
     [Route("[controller]")]
     public class SensorsController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult ReceiveSensorData([FromBody] SensorData data)
+        private readonly ILiveDataService _liveDataService;
+
+        public SensorsController(ILiveDataService liveDataService)
         {
-            return new NoContentResult();
+            _liveDataService = liveDataService;
+        }
+
+        [HttpPost]
+        public IActionResult ReceiveSensorData([FromBody] Sensor data)
+        {
+            try
+            {
+                _liveDataService.SetSensorData(data);
+                return Ok();
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
