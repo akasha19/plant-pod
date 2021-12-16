@@ -1,42 +1,32 @@
+
+
 <mat-card class="main-card title">
-  <mat-card-title>Room overview</mat-card-title>
+   <mat-card-title>Room Overview</mat-card-title>
 </mat-card>
-
-    <div *ngFor="let RoomData of Rooms">
-  <mat-card class="main-card">
-    <mat-card-header>
-
-
-
-    </mat-card-header>
-    <mat-card-content>
-      <div class="info-container">
-
-          <mat-card-title class="title">{{ RoomData.name }}</mat-card-title>
-
-          <div *ngFor="let RoomData of Rooms; let i = index">
-             <mat-card-title class="paragraph">{{ RoomData.facilities }}</mat-card-title>
-           </div>
-
-
-      <mat-card class="text-card flex-container center">
-        <div class="text-card-item">
-              <img  class="img" mat-card src="{{RoomData.imageSource}}" >
-        </div>
-        <div class="text-card-item">
-            <p>room info here</p>
-        </div>
-          <div class="text-card-item btn-group ">
-
-              <div>
-                  <button mat-flat-button class="horizontal_line">plant info</button>
-              </div>
-              <div>
-                  <button mat-flat-button class="horizontal_line">room info</button>
-              </div>
-            </div>
-
-      </mat-card>
-
-
-</div>
+<mat-card class="main-card" *ngFor="let RoomData of Room">
+   <mat-card-header>
+      <mat-card-title class="title">{{ RoomData.name }}</mat-card-title>
+      <mat-card-subtitle>{{ RoomData.description }}</mat-card-subtitle>
+   </mat-card-header>
+   <ul>
+      <li *ngFor="let facility of RoomData.facilities">
+         {{ facility }}
+      </li>
+   </ul>
+   <mat-card class="text-card flex-container center">
+      <div class="text-card-item">
+         <img class="img" src="{{RoomData.imageSource}}">
+      </div>
+      <div class="text-card-item">
+         <p>room info here</p>
+      </div>
+      <div class="text-card-item">
+         <div>
+            <button mat-flat-button color="primary" class="vertical_line">plant info</button>
+         </div>
+         <div>
+            <button mat-flat-button color="primary" class="vertical_line">room info</button>
+         </div>
+      </div>
+   </mat-card>
+</mat-card>

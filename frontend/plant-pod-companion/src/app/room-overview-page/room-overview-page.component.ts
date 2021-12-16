@@ -8,13 +8,13 @@ import { RoomData } from '../types/RoomData';
 
 export class RoomOverviewPageComponent implements OnInit {
 
-  Rooms: RoomData[] | undefined;
+  Room: RoomData[] | undefined;
 
   readonly maxTemperatureWarn = "(Maximum Temperature) The temperature of this room it too warm which can cause fatigue and headaches, please open the window for some fresh air.";
   readonly minTemperatureWarn = "(Minimum Temperature) The temperature of this room it too cold which can cause discomfort and a higher chance of sickness, please turn on the heater to heat up the room.";
 
   ngOnInit(): void {
-    this.Rooms = [
+    this.Room = [
       {
         id: "1",
         sensorId: "1",
