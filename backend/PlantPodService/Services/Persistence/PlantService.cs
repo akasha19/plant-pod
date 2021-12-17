@@ -1,23 +1,31 @@
-﻿using PlantPodService.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using PlantPodService.ViewModel;
 using System;
 
 namespace PlantPodService.Services.Persistence
 {
     public interface IPlantService
     {
-        public PlantEntity[] GetAllPlants();
+        public Plant[] GetAllPlants();
 
-        public PlantEntity GetPlantById(Guid id);
+        public Plant GetPlantById(Guid id);
     }
 
-    public class PlantService : IPlantService
+    public sealed class PlantService : IPlantService
     {
-        public PlantEntity[] GetAllPlants()
+        private readonly DbContext _dbContext;
+
+        public PlantService(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public Plant[] GetAllPlants()
         {
             throw new NotImplementedException();
         }
 
-        public PlantEntity GetPlantById(Guid id)
+        public Plant GetPlantById(Guid id)
         {
             throw new NotImplementedException();
         }
