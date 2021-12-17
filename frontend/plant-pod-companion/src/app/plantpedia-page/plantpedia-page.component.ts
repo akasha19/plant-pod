@@ -11,12 +11,12 @@ export class PlantpediaPageComponent implements OnInit {
 
   plants: Plant[] | undefined;
 
-  readonly maxTemperatureWarn = "(Maximum Temperature) Too high temperatures and this plant could dry out and die. Try opening a window or turning down the heating. If the plant is in direct sunlight, try moving it to a less sunny area for some time.";
-  readonly minTemperatureWarn = "(Minimum Temperature) When the plant is too cold, it could damage the plant and eventually kill it. Too cold environments will also stop it from growing. Try putting the plant in a more sunny area, turning up the heating for some time, or closing a window.";
-  readonly maxphWarn = "(Maximum pH) Different plants require different soil acidity (pH) to grow healthily. A pH that is too high for the plant, could eventually kill the plant. Try adding a small amount of aluminium sulfate or elemental sulfur in order to lower the pH.";
-  readonly minphWarn = "(Minimum pH) Different plants require different soil acidity (pH) to grow healthily. A pH that is too low for the plant, could eventually kill the plant. Adding granulated limestone to the soil will help increase the pH of the soil.";
-  readonly minHumidityWarn = "(Minimum Relative Humidity) When the humidity is too low, the plant could dry out an eventually die. The humidity could be increased by using a humidifier or by placing a bowl filled with water on a heating source near the plant.";
-  readonly maxHumidityWarn = "(Maximum Relative Humidity) Too high relative humidity could lead to fungi or bacteria on the plant. Lowering the humidity can be done by using a dehumidifier, or opening a window on a dry day.";
+  readonly maxTemperatureTooltip = "(Maximum Temperature) Too high temperatures and this plant could dry out and die. Try opening a window or turning down the heating. If the plant is in direct sunlight, try moving it to a less sunny area for some time.";
+  readonly minTemperatureTooltip = "(Minimum Temperature) When the plant is too cold, it could damage the plant and eventually kill it. Too cold environments will also stop it from growing. Try putting the plant in a more sunny area, turning up the heating for some time, or closing a window.";
+  readonly maxphTooltip = "(Maximum pH) Different plants require different soil acidity (pH) to grow healthily. A pH that is too high for the plant, could eventually kill the plant. Try adding a small amount of aluminium sulfate or elemental sulfur in order to lower the pH.";
+  readonly minphTooltip = "(Minimum pH) Different plants require different soil acidity (pH) to grow healthily. A pH that is too low for the plant, could eventually kill the plant. Adding granulated limestone to the soil will help increase the pH of the soil.";
+  readonly minHumidityTooltip = "(Minimum Relative Humidity) When the humidity is too low, the plant could dry out an eventually die. The humidity could be increased by using a humidifier or by placing a bowl filled with water on a heating source near the plant.";
+  readonly maxHumidityTooltip = "(Maximum Relative Humidity) Too high relative humidity could lead to fungi or bacteria on the plant. Lowering the humidity can be done by using a dehumidifier, or opening a window on a dry day.";
 
 
   ngOnInit(): void {

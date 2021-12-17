@@ -12,8 +12,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
