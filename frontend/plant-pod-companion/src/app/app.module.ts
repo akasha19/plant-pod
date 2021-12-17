@@ -11,13 +11,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
-
+import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlantpediaPageComponent,
+    RoomDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
         path: 'plantpedia',
         component: PlantpediaPageComponent
       },
+      {
+        path: 'roomdetails',
+        component: RoomDetailsPageComponent
+      }
     ])
   ],
   providers: [],

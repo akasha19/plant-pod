@@ -1,0 +1,22 @@
+@import "../app.component.scss";
+
+.half{
+    flex-wrap: wrap;
+    text-align: left;
+    min-width: 10rem;
+    width:50%;
+    margin-top: 0;
+
+}
+.wrapper{
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+}
+.fit{
+    width:100%
+}
+
+.center{
+    justify-content: center;
+}
