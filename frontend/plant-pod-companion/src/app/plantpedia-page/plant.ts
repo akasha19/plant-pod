@@ -1,7 +1,7 @@
 import { MoistureLevel } from "./MoistureLevels";
 
 export interface Plant {
-    id: number;
+    id: string;
     longName: string;
     shortName: string;
     description: string;

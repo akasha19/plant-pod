@@ -30,7 +30,7 @@ export class PlantpediaPageComponent implements OnInit {
   ngOnInit(): void {
     this.plants = [
       {
-        id: 1,
+        id: "1",
         longName: "Musa Ornata",
         shortName: "Banana Tree",
         description: "Musa ornata, the flowering banana, is one of more than 50 species of banana in the genus Musa of the family Musaceae. Most of these species are large tropical evergreen perennials, mainly from lowland areas with high temperature and humidity. Musa ornata originated in southeast Asia, and is cultivated for its commercial and ornamental value. The fruit is attractive but tends to be inedible. Banana Plants are best equipped for locations that provide bright, indirect light. Areas that are too dark will significantly increase the risk of root rot, along with slowed growth and yellowing older leaves.\nAllow the top half to dry out in between waters, reducing this further in the autumn and winter. Over-watering during its dormancy period is a common issue among owners, so always bear this in mind when the colder months arrive.\nFertilise using a 'Houseplant' labelled feed every four waters in the spring and summer, reducing this to every six in the colder months.\nKeep an eye out for Spider Mites that'll form webs on the under-sides of its foliage. Aphids can also attack the juvenile growth once the temperatures start to increase in the spring.\nEspecially if located in a dark location, wash or dust the foliage monthly, to increase the light-capturing efficiency.\nRepot every two or three years using 'Cactus & Succulent' soil. Introduce a layer of grit for larger specimens to strengthen their root system and downplay over-watering.",
@@ -45,7 +45,7 @@ export class PlantpediaPageComponent implements OnInit {
         moisture: MoistureLevel.Moist
       },
       {
-        id: 2,
+        id: "2",
         longName: "Zamicioculcas zamiifolia",
         shortName: "ZZ Plant",
         description: "This plant is a herbaceous perennial growing to 45–60 centimetres tall, from a stout underground. It is normally evergreen, will shed its leaves during drought, surviving drought due to the large potato-like rhizome that stores water until rainfall resumes. The leaves are pinnate, 40–60 centimetres long, with 6–8 pairs of leaflets 7–15 centimetres long; they are smooth, shiny, and dark green. The stems of these pinnate leaves are thickened at the bottom. The flowers are produced in a small bright yellow to brown or bronze spadix 5–7 centimetres long, partly hidden among the leaf bases; flowering is from mid summer to early autumn. Zamioculcas zamiifolia contains an unusually high water contents of leaves (91%) and petioles (95%) and has an individual leaf longevity of at least six months, which may be the reason it can survive extremely well under interior low light levels for four months without water.",
@@ -60,7 +60,7 @@ export class PlantpediaPageComponent implements OnInit {
         moisture: MoistureLevel.Dry
       },
       {
-        id: 3,
+        id: "3",
         longName: "Aloe Vera",
         shortName: "Aloe vera",
         description: "Aloe vera, sometimes described as a “wonder plant,” is a short-stemmed shrub. Aloe is a genus that contains more than 500 species of flowering succulent plants. Many Aloes occur naturally in North Africa. The leaves of Aloe vera are succulent, erect, and form a dense rosette. Many uses are made of the gel obtained from the plant’s leaves.",
@@ -76,7 +76,7 @@ export class PlantpediaPageComponent implements OnInit {
 
       },
       {
-        id: 4,
+        id: "4",
         longName: "Dracaena sanderiana",
         shortName: "Lucky Bamboo",
         description: "The Lucky Bamboo is a flowering plant growing in water and also one of the most common houseplants. Many people think that it’s a real bamboo plant. But it is a type of tropical water lily called Dracaena Sanderiana. The lucky bamboo plant is one of the most popular Feng Shui cures said to bring good luck and prosperity to the place where it is grown. It is also known to enhance the flow of positive energy in the home and office when placed in the right direction. The lucky bamboo plant represents the element wood and the red ribbon tied around it represents the element fire. It is known to create the sense of balance and safety in life. Get one for yourself or offer it as a gift for someone you care about. The Lucky Bamboo symbolizes a rich life, full of prosperity and strength, and we all need some of that these days.",
@@ -92,7 +92,7 @@ export class PlantpediaPageComponent implements OnInit {
 
       },
       {
-        id: 5,
+        id: "5",
         longName: "Pilea peperomioides",
         shortName: "Pancake Plant",
         description: "With its undeniably unique look, pancake plants (Pilea peperomioides) come with their own rich history. Also called a Chinese money plant, coin plant, or missionary plant, this trendy species is an easy-care houseplant with flat, round, succulent leaves. Long cultivated in China, this plant was brought to Europe by a Norwegian missionary in the 1940s. Pancake plants are known as the \"Pass It On\" plant thanks to many years of being gifted between friends around the globe.",
