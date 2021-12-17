@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MoistureLevel } from './MoistureLevels';
 import { Plant } from './plant';
 
 @Component({
@@ -18,6 +19,13 @@ export class PlantpediaPageComponent implements OnInit {
   readonly minHumidityTooltip = "(Minimum Relative Humidity) When the humidity is too low, the plant could dry out an eventually die. The humidity could be increased by using a humidifier or by placing a bowl filled with water on a heating source near the plant.";
   readonly maxHumidityTooltip = "(Maximum Relative Humidity) Too high relative humidity could lead to fungi or bacteria on the plant. Lowering the humidity can be done by using a dehumidifier, or opening a window on a dry day.";
 
+  // Todo Daan: add explanations, then remove comment
+  readonly moistureLevelTooltips: Map<MoistureLevel, string> = new Map<MoistureLevel, string>([
+    [MoistureLevel.Dry, "explanation dry"],
+    [MoistureLevel.Moist, "explanation moist"],
+    [MoistureLevel.Normal, "explanation normal"],
+    [MoistureLevel.Wet, "explanation wet"],
+  ]);
 
   ngOnInit(): void {
     this.plants = [
@@ -34,7 +42,7 @@ export class PlantpediaPageComponent implements OnInit {
         minHumidity: 50,
         maxHumidity: 100,
         imageSource: "assets/img/bananaplant.jpg",
-        moisture: "Moist" 
+        moisture: MoistureLevel.Moist
       },
       {
         id: 2,
@@ -49,7 +57,7 @@ export class PlantpediaPageComponent implements OnInit {
         minHumidity: 35,
         maxHumidity: 45,
         imageSource: "assets/img/zzplant.jpg",
-        moisture: "Dry",
+        moisture: MoistureLevel.Dry
       },
       {
         id: 3,
@@ -64,8 +72,8 @@ export class PlantpediaPageComponent implements OnInit {
         minHumidity: 10,
         maxHumidity: 70,
         imageSource: "assets/img/aloevera.jpg",
-        moisture: "Normal"
-        
+        moisture: MoistureLevel.Normal
+
       },
       {
         id: 4,
@@ -80,8 +88,8 @@ export class PlantpediaPageComponent implements OnInit {
         minHumidity: 50,
         maxHumidity: 100,
         imageSource: "assets/img/luckybamboo.jpg",
-        moisture:"Wet"
-        
+        moisture: MoistureLevel.Wet
+
       },
       {
         id: 5,
@@ -96,8 +104,8 @@ export class PlantpediaPageComponent implements OnInit {
         minHumidity: 50,
         maxHumidity: 75,
         imageSource: "assets/img/pancakeplant.jpg",
-        moisture:"Normal"
-        
+        moisture: MoistureLevel.Normal
+
       }
     ]
   }

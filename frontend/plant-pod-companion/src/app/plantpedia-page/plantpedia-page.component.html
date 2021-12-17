@@ -36,7 +36,7 @@
         </div>
         <div class="button-merger">
           <button mat-flat-button class="button-fit" color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{minHumidityTooltip}}">{{plant.moisture}}</button>
+            matTooltip="{{ moistureLevelTooltips.get(plant.moisture) }}">{{ plant.moisture }}</button>
         </div>
       </div>
 
