@@ -41,12 +41,16 @@
       </div>
 
       <mat-card class="text-card">
-        <mat-card-title>Description</mat-card-title>
-        {{ plant.description }}
+        <mat-card-title style="margin-bottom: 0.5rem;">Description</mat-card-title>
+        <mat-card-content>
+          {{ plant.description }}
+        </mat-card-content>
       </mat-card>
       <mat-card class="text-card">
         <mat-card-title>Care</mat-card-title>
-        {{ plant.care }}
+        <mat-card-content>
+          {{ plant.care }}
+        </mat-card-content>
       </mat-card>
     </mat-card-content>
   </mat-card>
