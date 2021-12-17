@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PlantPodService.Model
@@ -7,7 +8,7 @@ namespace PlantPodService.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         public string LongName { get; set; }
         public string ShortName { get; set; }
