@@ -25,7 +25,7 @@ namespace PlantPodService
         {
             services.AddControllers();
 			services.AddSingleton<ILiveDataService, LiveDataService>();
-            services.AddSingleton<IRoomsService, RoomsService>();
+            services.AddSingleton<IRoomService, RoomService>();
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
