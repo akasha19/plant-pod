@@ -11,11 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { PlantOverviewPageComponent } from './plant-overview-page/plant-overview-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     PlantpediaPageComponent,
-    RoomOverviewPageComponent
+    RoomOverviewPageComponent,
+    PlantOverviewPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
       {
         path: 'room-overview',
         component: RoomOverviewPageComponent
+      },
+      {
+        path: 'plant-overview',
+        component: PlantOverviewPageComponent
       }
     ])
   ],

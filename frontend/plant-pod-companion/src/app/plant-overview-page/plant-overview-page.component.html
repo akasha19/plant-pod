@@ -1,0 +1,28 @@
+
+
+<mat-card class="main-card title">
+   <mat-card-title>Room Overview</mat-card-title>
+</mat-card>
+<mat-card class="main-card" *ngFor="let PlantData of Plant">
+   <mat-card-header>
+      <mat-card-title class="title">{{ PlantData.name }}</mat-card-title>
+      <mat-card-subtitle>{{ PlantData.description }}</mat-card-subtitle>
+   </mat-card-header>
+
+   <mat-card class="text-card flex-container center">
+      <div class="text-card-item">
+         <img class="img" src="{{ PlantData.imageSource }}">
+      </div>
+      <div class="text-card-item">
+         <p>room info here</p>
+      </div>
+      <div class="text-card-item">
+         <div>
+            <button mat-flat-button color="primary" class="vertical_line">plant info</button>
+         </div>
+         <div>
+            <button mat-flat-button color="primary" class="vertical_line">room info</button>
+         </div>
+      </div>
+   </mat-card>
+</mat-card>
