@@ -12,7 +12,7 @@
     <mat-card-content>
       <div class="info-container">
         <div class="button-merger">
-          <button mat-flat-button class="blue" color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+          <button mat-flat-button class="blue" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
             matTooltip="{{minTemperatureWarn}}">{{ plant.minTemperature }}&deg; C</button>
 
           <button mat-flat-button class="red" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
@@ -20,7 +20,7 @@
         </div>
 
         <div class="button-merger">
-          <button mat-flat-button class="blue" color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+          <button mat-flat-button class="blue" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
             matTooltip="{{minphWarn}}">pH: {{ plant.minph }}</button>
 
           <button mat-flat-button class="red" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
@@ -28,14 +28,14 @@
         </div>
 
         <div class="button-merger">
-          <button mat-flat-button class="blue" color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+          <button mat-flat-button class="blue" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
             matTooltip="{{minHumidityWarn}}">RH: {{ plant.minHumidity }}%</button>
 
           <button mat-flat-button class="red" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
             matTooltip="{{maxHumidityWarn}}">RH: {{ plant.maxHumidity }}%</button>
         </div>
         <div class="button-merger">
-          <button mat-flat-button class="button-fit" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+          <button mat-flat-button class="button-fit" color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
             matTooltip="{{minHumidityWarn}}">{{plant.moisture}}</button>
         </div>
       </div>
