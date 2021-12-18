@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlantPodService.Model;
 using System;
+using System.Linq;
 
 namespace PlantPodService.Services.Persistence
 {
@@ -13,21 +14,21 @@ namespace PlantPodService.Services.Persistence
 
     public sealed class PlantService : IPlantService
     {
-        private readonly DbContext _dbContext;
+        private readonly PlantPodServiceDbContext _dbContext;
 
-        public PlantService(DbContext dbContext)
+        public PlantService(PlantPodServiceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public PlantEntity[] GetAllPlants()
         {
-            throw new NotImplementedException();
+            return _dbContext.Plants.ToArray();
         }
 
         public PlantEntity GetPlantById(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Plants.FirstOrDefault(e => e.Id == id);
         }
     }
 }

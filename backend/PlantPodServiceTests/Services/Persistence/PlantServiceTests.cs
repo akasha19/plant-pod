@@ -30,7 +30,7 @@ namespace PlantPodServiceTests.Services.Persistence
         {
             var result = _sut.GetAllPlants();
 
-            result.Should().BeSameAs(Plants());
+            result.Should().BeEquivalentTo(Plants());
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace PlantPodServiceTests.Services.Persistence
         {
             var result = _sut.GetPlantById(_plantId);
 
-            result.Should().NotBeNull().And.BeSameAs(Plant());
+            result.Should().NotBeNull().And.BeEquivalentTo(Plant());
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace PlantPodServiceTests.Services.Persistence
             Plant(),
             new PlantEntity
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("ded6f341-25da-4699-b4db-bdb5db6ecea4"),
                 Care = "don't make it too wet",
                 Description = "another random plant",
                 Image = "still a todo",
