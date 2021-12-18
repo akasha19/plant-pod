@@ -25,7 +25,9 @@ namespace PlantPodService
         {
             services.AddControllers();
 			services.AddSingleton<ILiveDataService, LiveDataService>();
+
             services.AddSingleton<IRoomService, RoomService>();
+            services.AddSingleton<IPlantService, PlantService>();
 
             services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]));
             services.AddScoped<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
