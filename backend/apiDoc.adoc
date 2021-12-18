@@ -20,7 +20,8 @@ Example request::
 }
 
 Response::
-204 (No Content)
+200 (Ok)
 
 Errors::
+400 (Bad Request) - when sensor id is null, invalid or unknown
 500 (Internal server error)
