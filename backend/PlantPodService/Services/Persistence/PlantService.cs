@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PlantPodService.ViewModel;
+using PlantPodService.Model;
 using System;
 
 namespace PlantPodService.Services.Persistence
 {
     public interface IPlantService
     {
-        public Plant[] GetAllPlants();
+        public PlantEntity[] GetAllPlants();
 
-        public Plant GetPlantById(Guid id);
+        public PlantEntity GetPlantById(Guid id);
     }
 
     public sealed class PlantService : IPlantService
@@ -20,12 +20,12 @@ namespace PlantPodService.Services.Persistence
             _dbContext = dbContext;
         }
 
-        public Plant[] GetAllPlants()
+        public PlantEntity[] GetAllPlants()
         {
             throw new NotImplementedException();
         }
 
-        public Plant GetPlantById(Guid id)
+        public PlantEntity GetPlantById(Guid id)
         {
             throw new NotImplementedException();
         }
