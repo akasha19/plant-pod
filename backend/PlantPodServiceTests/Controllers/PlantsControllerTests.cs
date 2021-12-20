@@ -23,7 +23,7 @@ namespace PlantPodServiceTests.Controllers
         public PlantsControllerTests()
         {
             var config = new MapperConfigurationExpression();
-            config.AddProfile(typeof(MappingProfile));
+            config.AddProfile(new MappingProfile());
             var mapper = new Mapper(new MapperConfiguration(config));
             
             _sut = new PlantsController(_plantService, mapper);

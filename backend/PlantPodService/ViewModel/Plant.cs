@@ -17,7 +17,7 @@ namespace PlantPodService.ViewModel
         public decimal Maxph { get; set; }
         public decimal MinHumidity { get; set; }
         public decimal MaxHumidity { get; set; }
-        public Moisture Moisture { get; set; }
+        public string Moisture { get; set; }
         public string Image { get; set; }
     }
 }

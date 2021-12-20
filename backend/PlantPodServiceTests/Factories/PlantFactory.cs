@@ -39,7 +39,7 @@ namespace PlantPodServiceTests.Factories
             MaxTemperature = 35.7m,
             MinHumidity = 13.2m,
             MinTemperature = 12.4m,
-            Moisture = Moisture.Moist
+            Moisture = Moisture.Moist.ToString()
         };
     }
 }

@@ -75,7 +75,74 @@ Example response::
     "humidity" = 40.3,
     "moisture" = 53.7,
     "ph" = 7.5
-},
+}
+
+Response::
+200 (Ok)
+
+Errors::
+400 (Bad Request) - when sensor id is null, invalid or unknown
+500 (Internal server error)
+
+== Get plant data (frontend)
+
+=== GET `/plants`
+Description::
+get all plant data
+Request params:: none
+Query params:: none
+
+Example response::
+[source, json]
+[
+    {
+        "id": "4eeb3e42-c47e-4930-9464-ce81c74502df",
+        "longName": "plant long name",
+        "shortName": "plant short name",
+        "description": "just some random plant",
+        "care": "don't let it dry out",
+        "minTemperature": 12.40,
+        "maxTemperature": 35.70,
+        "minph": 6.50,
+        "maxph": 9.10,
+        "minHumidity": 13.20,
+        "maxHumidity": 30.40,
+        "moisture": "Dry",
+        "image": "source path"
+    },
+    [...]
+]
+
+Response::
+200 (Ok)
+
+Errors::
+500 (Internal server error)
+
+=== GET `/plants/{id}`
+Description::
+get data for one plant
+Request params::
+* id [Guid]
+Query params:: none
+
+Example response::
+[source, json]
+{
+    "id": "4eeb3e42-c47e-4930-9464-ce81c74502df",
+    "longName": "plant long name",
+    "shortName": "plant short name",
+    "description": "just some random plant",
+    "care": "don't let it dry out",
+    "minTemperature": 12.40,
+    "maxTemperature": 35.70,
+    "minph": 6.50,
+    "maxph": 9.10,
+    "minHumidity": 13.20,
+    "maxHumidity": 30.40,
+    "moisture": "Dry",
+    "image": "source path"
+}
 
 Response::
 200 (Ok)
