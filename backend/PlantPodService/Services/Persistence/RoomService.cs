@@ -5,7 +5,7 @@ using PlantPodService.Model;
 
 namespace PlantPodService.Services.Persistence
 {
-    public interface IRoomsService
+    public interface IRoomService
     {
         public IEnumerable<RoomEntity> GetRooms();
 
@@ -14,7 +14,7 @@ namespace PlantPodService.Services.Persistence
         public ImmutableArray<Guid> GetSensorIds();
     }
 
-    public sealed class RoomsService : IRoomsService
+    public sealed class RoomService : IRoomService
     {
         public RoomEntity GetRoomById()
         {

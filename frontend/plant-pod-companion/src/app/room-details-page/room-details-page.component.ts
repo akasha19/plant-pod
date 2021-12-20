@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Sensor } from "../types/Sensor";
-import { RoomData } from "../types/RoomData";
+import { Room } from "../types/Room";
 
 @Component({
   selector: 'app-room-details-page',
@@ -9,32 +9,32 @@ import { RoomData } from "../types/RoomData";
 })
 export class RoomDetailsPageComponent implements OnInit {
 
-  room: RoomData | undefined;
+  room: Room | undefined;
   sensor: Sensor | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.room=
-      {
-        id:"1",
-        sensorId: "1",
-        roomName: "Living Room",
-        shortDescription: "A Living Room on the first floor of the house",
-        facilities:["Airconditioning","Heating","Humidifier"],
-        imageSource:"../assets/img/aloevera.jpg"
+    this.room =
+    {
+      id: "1",
+      sensorId: "1",
+      roomName: "Living Room",
+      shortDescription: "A Living Room on the first floor of the house",
+      facilities: ["Airconditioning", "Heating", "Humidifier"],
+      imageSource: "../assets/img/aloevera.jpg"
 
-      }
+    }
 
-    this.sensor=
-      {
-        id: "1",
-        humidity: 50,
-        ph: 6.5,
-        temperature: 15,
-        moisture: 10
+    this.sensor =
+    {
+      id: "1",
+      humidity: 50,
+      ph: 6.5,
+      temperature: 15,
+      moisture: 10
 
-      }
+    }
 
   }
 
