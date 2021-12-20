@@ -1,0 +1,48 @@
+@import "../styles.scss";
+
+.toolbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    background-color: $dark_green;
+    color: white;
+    font-weight: 600;
+}
+
+.main-card {
+    max-width: 50rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-card.title {
+    background-color: $light_green;
+    text-align: center;
+    color: white;
+}
+
+.content {
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mat-card-title {
+    margin-bottom: 0.5rem;
+}
+
+.text-card {
+    max-width: 50rem;
+    margin-top: 1rem;
+    background-color: $grey_background;
+}
+
+.button-fit{
+    width:100%
+}

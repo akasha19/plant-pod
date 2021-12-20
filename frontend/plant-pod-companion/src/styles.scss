@@ -2,8 +2,8 @@
 @include mat.core();
 @import './colors.scss';
 
-$plant-pod-companion-theme-green: mat.define-palette($green-palette, $dark_green);
-$plant-pod-companion-theme-blue: mat.define-palette($blue-palette, $dark_blue);
+$plant-pod-companion-theme-green: mat.define-palette($green-palette);
+$plant-pod-companion-theme-blue: mat.define-palette($blue-palette);
 
 $plant-pod-companion-warn: mat.define-palette(mat.$red-palette);
 
