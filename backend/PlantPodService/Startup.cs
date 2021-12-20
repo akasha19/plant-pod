@@ -29,8 +29,8 @@ namespace PlantPodService
             services.AddSingleton<IRoomService, RoomService>();
             services.AddSingleton<IPlantService, PlantService>();
 
-            services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]));
-            services.AddScoped<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
+            services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]), optionsLifetime: ServiceLifetime.Singleton, contextLifetime: ServiceLifetime.Singleton);
+            services.AddSingleton<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
