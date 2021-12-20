@@ -3,19 +3,19 @@
 <mat-card class="main-card title">
    <mat-card-title>Room Overview</mat-card-title>
 </mat-card>
-<mat-card class="main-card" *ngFor="let RoomData of Room">
+<mat-card class="main-card" *ngFor="let Room of Rooms">
    <mat-card-header>
-      <mat-card-title class="title">{{ RoomData.name }}</mat-card-title>
-      <mat-card-subtitle>{{ RoomData.description }}</mat-card-subtitle>
+      <mat-card-title class="title">{{ Room.name }}</mat-card-title>
+      <mat-card-subtitle>{{ Room.description }}</mat-card-subtitle>
    </mat-card-header>
    <ul>
-      <li *ngFor="let facility of RoomData.facilities">
+      <li *ngFor="let facility of Room.facilities">
          {{ facility }}
       </li>
    </ul>
-   <mat-card class="text-card flex-container center">
+   <mat-card class="text-card flex-container ">
       <div class="text-card-item">
-         <img class="img" src="{{RoomData.imageSource}}">
+         <img class="img" src="{{Room.imageSource}}">
       </div>
       <div class="text-card-item">
          <p>room info here</p>

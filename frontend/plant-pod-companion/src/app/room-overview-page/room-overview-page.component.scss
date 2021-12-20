@@ -1,10 +1,4 @@
 @import '../app.component.scss';
-
-
-.mat-card-header{
-
-}
-
 .info-container{
   overflow: auto;
   width: 50rem;
@@ -12,7 +6,6 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
 .mat-flat-button{
   margin-bottom: 0.5rem;
   width: 25%;
@@ -21,58 +14,34 @@
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
-
 .vertical_line{
 display: block;
-width:auto;
-margin:2rem;
-color:white;
+width: auto;
+margin: 2rem;
+color: white;
 background-color: #CADF72;
 }
-
-
-
-.title{
-
-}
-
 .paragraph{
   font-size: 1rem;
 }
 .img{
-  width:15rem;
-  height:10rem;
-
+  width: 15rem;
+  height: 10rem;
 }
 .text-card {
     max-width: 60rem;
-    height:12rem;
+    height: 12rem;
     background-color: $extra_bg;
  }
-
-
 .text-card-item{
-  width:20rem;
-  height:10rem;
+  width: 20rem;
+  height: 10rem;
   padding: 1rem;
   text-align: center;
-
 }
-
-
-
-
-
 .flex-container {
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
-}
-
-.center {
-  justify-content: center;
-}
-.center li {
-  background: deepskyblue;
 }
