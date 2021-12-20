@@ -10,13 +10,20 @@ submit sensor data from the arduino to the backend
 Request params:: none
 Query params:: none
 Request body::
-* sensorId [GUID]
+* id [GUID]
 * temperature [decimal]
+* humidity [decimal]
+* moisture [decimal]
+* ph [decimal]
+
 Example request::
 [source, json]
 {
-    "sensorId": "196db225-e5ef-4636-b967-c214a0ddb73f",
-    "temperature": 14.3
+    "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
+    "temperature": 14.3,
+    "humidity" = 40.3,
+    "moisture" = 53.7,
+    "ph" = 7.5
 }
 
 Response::
