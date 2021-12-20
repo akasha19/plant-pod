@@ -28,7 +28,7 @@ namespace PlantPodService.Controllers
         }
 
         [Route("{id}")]
-        public IActionResult GetPlantById([FromQuery(Name = "id")] string id)
+        public IActionResult GetPlantById([FromRoute(Name = "id")] string id)
         {
             if (!Guid.TryParse(id, out var plantId))
             {
