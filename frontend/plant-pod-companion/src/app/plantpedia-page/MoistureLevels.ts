@@ -1,6 +1,6 @@
 export enum MoistureLevel {
-    Dry = "dry",
-    Moist = "moist",
-    Normal = "normal",
-    Wet = "wet"
+    Dry = "Dry",
+    Moist = "Moist",
+    Normal = "Normal",
+    Wet = "Wet"
 }
