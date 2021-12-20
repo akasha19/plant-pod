@@ -20,10 +20,10 @@ export class PlantpediaPageComponent implements OnInit {
   readonly maxHumidityTooltip = "(Maximum Relative Humidity) Too high relative humidity could lead to fungi or bacteria on the plant. Lowering the humidity can be done by using a dehumidifier, or opening a window on a dry day.";
 
   readonly moistureLevelTooltips: Map<MoistureLevel, string> = new Map<MoistureLevel, string>([
-    [MoistureLevel.Dry, "Dry soil should not feel damp or wet in any way, only water the soil once every few weeks and make sure to have a flowe pot with holes in the bottom in order to drain any excess water."],
+    [MoistureLevel.Dry, "Dry soil should not feel damp or wet in any way, only water the soil once every few weeks and make sure to have a flower pot with holes in the bottom in order to drain any excess water."],
     [MoistureLevel.Moist, "Moist soil should feel and look damp or wet when touched. The best way to keep this level of moisture is to have a draining plant pod which is placed inside a container filled with water. Make sure to always keep the container filled with water."],
     [MoistureLevel.Normal, "This level of moisture can be obtained by regularly watering the plant pot. Make sure to drain the excess water, but always keep the soil damp."],
-    [MoistureLevel.Wet, "This level of moisture can be dangerous for a lot of plants as it provides an excellent environment for moulds and root rot but some plants thrive in this environment. Moist soil can be provided by having a closed plant pot which is regularly provided fresh water."],
+    [MoistureLevel.Wet, "This level of moisture can be dangerous for a lot of plants as it provides an excellent environment for moulds and root rot but some plants thrive in this environment. Moist soil can be provided by having a closed plant pot which is regularly provided with fresh water."],
   ]);
 
   ngOnInit(): void {
