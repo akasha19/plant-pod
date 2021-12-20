@@ -22,7 +22,7 @@ namespace PlantPodService.Controllers
         }
 
         [Route("{id}")]
-        public IActionResult GetPlantById([FromQuery(Name = "id")] Guid id)
+        public IActionResult GetPlantById([FromQuery(Name = "id")] string id)
         {
             return new OkObjectResult("plant");
         }
