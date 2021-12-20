@@ -1,0 +1,32 @@
+@import "../app.component.scss";
+
+.mat-card-header {
+  margin-right: 0rem;
+}
+
+.info-container {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.button-merger{
+  flex-wrap: wrap;
+  text-align: center;
+  min-width: 10rem;
+  width: 100%;
+}
+
+.min-button{
+  border-radius: 0.3rem 0rem 0rem 0.3rem;
+  width: 50%;
+  min-width: 4rem;
+  vertical-align: middle;
+}
+
+.max-button{
+  border-radius: 0rem 0.3rem 0.3rem 0rem;
+  width: 50%;
+  min-width: 4rem;
+  vertical-align: middle;
+}

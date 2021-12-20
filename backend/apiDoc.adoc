@@ -2,7 +2,7 @@
 
 NOTE: All request bodies have to be provided as JSON formatted string.
 
-== Submit sensor data
+== Submit sensor data (arduino)
 
 === POST `/sensors`
 Description::
@@ -10,14 +10,72 @@ submit sensor data from the arduino to the backend
 Request params:: none
 Query params:: none
 Request body::
-* sensorId [GUID]
+* id [GUID]
 * temperature [decimal]
+* humidity [decimal]
+* moisture [decimal]
+* ph [decimal]
+
 Example request::
 [source, json]
 {
-    "sensorId": "196db225-e5ef-4636-b967-c214a0ddb73f",
-    "temperature": 14.3
+    "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
+    "temperature": 14.3,
+    "humidity" = 40.3,
+    "moisture" = 53.7,
+    "ph" = 7.5
 }
+
+Response::
+200 (Ok)
+
+Errors::
+400 (Bad Request) - when sensor id is null, invalid or unknown
+500 (Internal server error)
+
+== Get sensor data (frontend)
+
+=== GET `/livedata`
+Description::
+get livedata from all sensors
+Request params:: none
+Query params:: none
+
+Example response::
+[source, json]
+[
+    {
+        "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
+        "temperature": 14.3,
+        "humidity" = 40.3,
+        "moisture" = 53.7,
+        "ph" = 7.5
+    },
+    [...]
+]
+
+Response::
+200 (Ok)
+
+Errors::
+500 (Internal server error)
+
+=== GET `/livedata/{id}`
+Description::
+get livedata for one sensor
+Request params::
+* id [Guid]
+Query params:: none
+
+Example response::
+[source, json]
+{
+    "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
+    "temperature": 14.3,
+    "humidity" = 40.3,
+    "moisture" = 53.7,
+    "ph" = 7.5
+},
 
 Response::
 200 (Ok)
