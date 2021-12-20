@@ -1,21 +1,20 @@
-<mat-card class="sensoroverview">
+<mat-card class="sensor-overview">
     <table *ngIf="sensor">
         <tr>
-            <td class="rightalign">Temperature:</td>
+            <td class="right-align">Temperature:</td>
             <td>{{ sensor.temperature }}</td>
         </tr>
         <tr>
-            <td class="rightalign">Humidity:</td>
+            <td class="right-align">Humidity:</td>
             <td>{{ sensor.humidity }}</td>
         </tr>
         <tr>
-            <td class="rightalign">pH Value:</td>
+            <td class="right-align">pH Value:</td>
             <td>{{ sensor.ph }}</td>
         </tr>
         <tr>
-            <td class="rightalign">Moisture:</td>
+            <td class="right-align">Moisture:</td>
             <td>{{ sensor.moisture }}</td>
         </tr>
     </table>
-
 </mat-card>

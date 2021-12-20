@@ -1,20 +1,18 @@
 @import "../app.component.scss";
 
-.sensoroverview{
-    width:50%;
+.sensor-overview{
+    width: 50%;
     width: 15rem;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
-table {
+table{
     width: 100%;   
 }
 
-td:first-child{
-    width: 60%;
-}
-.rightalign{
+.right-align{
     text-align: right;
-    padding-right:1rem
+    padding-right: 1rem;
+    width: 60%;
 }

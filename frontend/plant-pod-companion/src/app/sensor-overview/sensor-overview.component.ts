@@ -6,14 +6,13 @@ import { Sensor } from '../types/Sensor';
   templateUrl: './sensor-overview.component.html',
   styleUrls: ['./sensor-overview.component.scss']
 })
+
 export class SensorOverviewComponent implements OnInit {
 
   @Input()
   id: string | undefined;
 
   sensor: Sensor | undefined;
-
-  constructor() { }
 
   ngOnInit(): void {
 
@@ -26,6 +25,4 @@ export class SensorOverviewComponent implements OnInit {
     }
 
   }
-
-
 }
