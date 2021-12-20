@@ -31,12 +31,6 @@ export class RoomOverviewPageComponent implements OnInit {
         facilities: ['Airconditioning', 'heating', 'smartboard', 'smartplants'],
         imageSource: "assets/img/room_2.jpg"
       },
-
     ]
   }
-
-
-
-
-
 }
