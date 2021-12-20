@@ -1,9 +1,12 @@
-﻿using FakeItEasy;
+﻿using AutoMapper;
+using AutoMapper.Configuration;
+using FakeItEasy;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using PlantPodService.Controllers;
 using PlantPodService.Services.Persistence;
+using PlantPodService.ViewModel;
 using PlantPodServiceTests.Factories;
 using System;
 
@@ -19,7 +22,11 @@ namespace PlantPodServiceTests.Controllers
 
         public PlantsControllerTests()
         {
-            _sut = new PlantsController(_plantService);
+            var config = new MapperConfigurationExpression();
+            config.AddProfile(typeof(MappingProfile));
+            var mapper = new Mapper(new MapperConfiguration(config));
+            
+            _sut = new PlantsController(_plantService, mapper);
         }
 
         [Test]
@@ -54,7 +61,7 @@ namespace PlantPodServiceTests.Controllers
             var result = _sut.GetAllPlants();
 
             var okObject = (OkObjectResult) result;
-            okObject?.Value.Should().Be(plants);
+            okObject?.Value.Should().BeEquivalentTo(plants);
         }
 
         [Test]
@@ -81,7 +88,7 @@ namespace PlantPodServiceTests.Controllers
             var result = _sut.GetPlantById(plantEntity.Id.ToString());
 
             var okObject = (OkObjectResult) result;
-            okObject?.Value.Should().Be(plant);
+            okObject?.Value.Should().BeEquivalentTo(plant);
         }
 
         [Test]
