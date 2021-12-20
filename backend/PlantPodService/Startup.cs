@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using PlantPodService.Model;
 using PlantPodService.Services;
 using PlantPodService.Services.Persistence;
-using System;
+using PlantPodService.ViewModel;
 
 namespace PlantPodService
 {
@@ -28,6 +28,8 @@ namespace PlantPodService
 
             services.AddSingleton<IRoomService, RoomService>();
             services.AddSingleton<IPlantService, PlantService>();
+             
+            services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]), optionsLifetime: ServiceLifetime.Singleton, contextLifetime: ServiceLifetime.Singleton);
             services.AddSingleton<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
