@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,9 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
+export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatTooltipModule,
     MatToolbarModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'plantpedia',
@@ -32,7 +35,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
       },
     ])
   ],
-  providers: [],
+  providers: [{ provide: SERVICE_URL, useValue: "http://localhost:8588/" }],
   bootstrap: [AppComponent]
 })
 
