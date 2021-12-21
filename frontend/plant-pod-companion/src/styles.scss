@@ -2,8 +2,8 @@
 @include mat.core();
 @import './colors.scss';
 
-$plant-pod-companion-theme-green: mat.define-palette($green-palette, $dark_green);
-$plant-pod-companion-theme-blue: mat.define-palette($blue-palette, $dark_blue);
+$plant-pod-companion-theme-green: mat.define-palette($green-palette);
+$plant-pod-companion-theme-blue: mat.define-palette($blue-palette);
 
 $plant-pod-companion-warn: mat.define-palette(mat.$red-palette);
 
@@ -18,16 +18,4 @@ $plant-pod-companion-theme: mat.define-light-theme((
 @include mat.all-component-themes($plant-pod-companion-theme);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: "Verdana", sans-serif; }
-
-$my-primary: mat.define-palette(mat.$indigo-palette, 500);
-$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-$my-theme: mat.define-light-theme((
- color: (
-   primary: $my-primary,
-   accent: $my-accent,
- )
-));
-
-@include mat.all-component-themes($my-theme);
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

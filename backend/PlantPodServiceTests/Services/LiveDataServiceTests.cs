@@ -13,16 +13,16 @@ namespace PlantPodServiceTests.Services
     public class LiveDataServiceTests
     {
         protected ILiveDataService Sut;
-        protected IRoomsService RoomsService = A.Fake<IRoomsService>(options => options.Strict());
+        protected IRoomService RoomService = A.Fake<IRoomService>(options => options.Strict());
         protected Guid ValidSensorId = Guid.NewGuid();
         protected Guid ValidSensorIdTwo = Guid.NewGuid();
 
         public LiveDataServiceTests()
         {
             A.
-                CallTo(() => RoomsService.GetSensorIds())
+                CallTo(() => RoomService.GetSensorIds())
                 .Returns(new [] { ValidSensorId, ValidSensorIdTwo }.ToImmutableArray());
-            Sut = new LiveDataService(RoomsService);
+            Sut = new LiveDataService(RoomService);
         }
 
         [Test]

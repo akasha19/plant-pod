@@ -19,9 +19,9 @@ namespace PlantPodService.Services
     {
         private readonly Dictionary<Guid, Sensor> _sensorData = new Dictionary<Guid, Sensor>();
 
-        public LiveDataService(IRoomsService roomsService)
+        public LiveDataService(IRoomService roomService)
         {
-            foreach (var sensorId in roomsService.GetSensorIds())
+            foreach (var sensorId in roomService.GetSensorIds())
             {
                 _sensorData.Add(sensorId, new Sensor() {Id = sensorId});
             }

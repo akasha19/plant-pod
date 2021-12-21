@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 namespace PlantPodServiceTests.Services.Persistence
 {
     [TestFixture]
-    class RoomsServiceTests
+    class RoomServiceTests
     {
-        protected IRoomsService Sut = new RoomsService();
+        protected IRoomService Sut = new RoomService();
 
         [Test]
         public void GetSensorIds_ShouldReturnCorrectId()
