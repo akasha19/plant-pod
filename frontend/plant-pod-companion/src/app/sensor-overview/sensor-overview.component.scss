@@ -1,10 +1,10 @@
 @import "../app.component.scss";
 
 .sensor-overview{
-    width: 50%;
-    width: 15rem;
+    width: 45%;
     left: 50%;
     transform: translate(-50%, 0);
+    max-width: 20rem
 }
 
 table{
