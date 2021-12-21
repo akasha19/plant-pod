@@ -14,7 +14,7 @@ export class RoomOverviewPageComponent implements OnInit {
   readonly minTemperatureWarn = "(Minimum Temperature) The temperature of this room it too cold which can cause discomfort and a higher chance of sickness, please turn on the heater to heat up the room.";
 
   ngOnInit(): void {
-    this.Rooms = [
+    this.rooms = [
       {
         id: "1",
         sensorId: "1",
