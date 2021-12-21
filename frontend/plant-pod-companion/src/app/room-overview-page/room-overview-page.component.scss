@@ -1,21 +1,22 @@
 @import '../app.component.scss';
-.vertical_line{
+
+.vertical-line {
 display: block;
 width: auto;
 margin: 2rem;
 }
-.img{
+
+.img {
   width: 15rem;
   height: 10rem;
 }
-.text-card {
-    background-color: $grey_background
- }
-.text-card-item{
+
+.text-card-item {
   width: 20rem;
   padding: 1rem;
   text-align: center;
 }
+
 .flex-container {
   padding: 0;
   display: flex;
