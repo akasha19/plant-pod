@@ -8,7 +8,7 @@ import { Room } from '../types/Room';
 
 export class RoomOverviewPageComponent implements OnInit {
 
-  Rooms: Room[] | undefined;
+  rooms: Room[] | undefined;
 
   readonly maxTemperatureWarn = "(Maximum Temperature) The temperature of this room it too warm which can cause fatigue and headaches, please open the window for some fresh air.";
   readonly minTemperatureWarn = "(Minimum Temperature) The temperature of this room it too cold which can cause discomfort and a higher chance of sickness, please turn on the heater to heat up the room.";

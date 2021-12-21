@@ -1,5 +1,3 @@
-import { RoomOverviewPageComponent } from './room-overview-page.component';
-
 describe('RoomOverviewPageComponent', () => {
   let component: RoomOverviewPageComponent;
   let fixture: ComponentFixture<RoomOverviewPageComponent>;
