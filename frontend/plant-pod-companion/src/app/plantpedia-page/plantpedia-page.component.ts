@@ -12,7 +12,7 @@ import { Plant } from './plant';
 
 export class PlantpediaPageComponent implements OnInit {
 
-  plants: Observable<Plant[] | undefined> | undefined;
+  plants: Observable<Plant[] | undefined>;
 
   readonly maxTemperatureTooltip = "(Maximum Temperature) Too high temperatures and this plant could dry out and die. Try opening a window or turning down the heating. If the plant is in direct sunlight, try moving it to a less sunny area for some time.";
   readonly minTemperatureTooltip = "(Minimum Temperature) When the plant is too cold, it could damage the plant and eventually kill it. Too cold environments will also stop it from growing. Try putting the plant in a more sunny area, turning up the heating for some time, or closing a window.";
