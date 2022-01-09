@@ -33,7 +33,7 @@ import { RoomDetailsPageComponent } from './room-details-page/room-details-page.
         component: PlantpediaPageComponent
       },
       {
-        path: 'roomdetails',
+        path: 'room-details',
         component: RoomDetailsPageComponent
       }
     ])

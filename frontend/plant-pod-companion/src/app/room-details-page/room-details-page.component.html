@@ -5,16 +5,16 @@
     <mat-card class="main-card">
         <mat-card-header>
             <mat-card-title>{{room.roomName}}</mat-card-title>
+            <mat-card-subtitle>{{room.shortDescription}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="wrapper">
             <div class="half"><img class="fit" src={{room.imageSource}}> </div>
             <mat-card class="text-card half">
-                <mat-card-subtitle>{{room.shortDescription}}</mat-card-subtitle>
                 Facilities: 
                 <ul>
                     <li *ngFor="let facility of room.facilities">{{facility}}</li>
                 </ul>
-                <sensor-overview></sensor-overview>
+                <sensor-overview [id]="room.sensorId"></sensor-overview>
             </mat-card>
         </mat-card-content>
     </mat-card>

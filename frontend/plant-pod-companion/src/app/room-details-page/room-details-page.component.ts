@@ -10,9 +10,7 @@ import { Room } from "../types/Room";
 export class RoomDetailsPageComponent implements OnInit {
 
   room: Room | undefined;
-  sensor: Sensor | undefined;
 
-  constructor() { }
 
   ngOnInit(): void {
     this.room =
@@ -25,17 +23,5 @@ export class RoomDetailsPageComponent implements OnInit {
       imageSource: "../assets/img/aloevera.jpg"
 
     }
-
-    this.sensor =
-    {
-      id: "1",
-      humidity: 50,
-      ph: 6.5,
-      temperature: 15,
-      moisture: 10
-
-    }
-
   }
-
 }
