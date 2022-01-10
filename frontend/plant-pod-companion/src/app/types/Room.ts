@@ -1,4 +1,4 @@
-export interface Room {
+export interface room {
     id: string;
     sensorId: string;
     name: string;

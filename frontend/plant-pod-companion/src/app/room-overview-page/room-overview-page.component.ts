@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Room } from '../types/Room';
+import { room } from '../types/Room';
 @Component({
   selector: 'app-room-overview-page',
   templateUrl: './room-overview-page.component.html',
@@ -8,13 +8,11 @@ import { Room } from '../types/Room';
 
 export class RoomOverviewPageComponent implements OnInit {
 
-  rooms: Room[] | undefined;
+  Rooms: room[] | undefined;
 
-  readonly maxTooltip = "(Maximum Temperature) The temperature of this room it too warm which can cause fatigue and headaches, please open the window for some fresh air.";
-  readonly minTooltip = "(Minimum Temperature) The temperature of this room it too cold which can cause discomfort and a higher chance of sickness, please turn on the heater to heat up the room.";
 
   ngOnInit(): void {
-    this.rooms = [
+    this.Rooms = [
       {
         id: "1",
         sensorId: "1",
