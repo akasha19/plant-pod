@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using PlantPodService.Model;
 using PlantPodService.Services.Persistence;
+using PlantPodServiceTests.Factories;
 using System;
+using System.Linq;
 
 namespace PlantPodServiceTests.Services.Persistence
 {
@@ -12,6 +14,8 @@ namespace PlantPodServiceTests.Services.Persistence
     {
         private readonly IPlantService _sut;
         private readonly Guid _plantId = Guid.NewGuid();
+        private readonly PlantEntity _plant;
+        private readonly PlantEntity[] _plants;
 
         public PlantServiceTests()
         {
@@ -20,7 +24,15 @@ namespace PlantPodServiceTests.Services.Persistence
                 .Options;
 
             var dbContext = new PlantPodServiceDbContext(options);
-            dbContext.Plants.AddRange(Plants());
+
+            _plants = new[]
+            {
+                PlantFactory.PlantEntity(_plantId),
+                PlantFactory.PlantEntity()
+            };
+            _plant = _plants.First();
+
+            dbContext.Plants.AddRange(_plants);
             dbContext.SaveChanges();
             _sut = new PlantService(dbContext);
         }
@@ -30,7 +42,7 @@ namespace PlantPodServiceTests.Services.Persistence
         {
             var result = _sut.GetAllPlants();
 
-            result.Should().BeEquivalentTo(Plants());
+            result.Should().BeEquivalentTo(_plants);
         }
 
         [Test]
@@ -38,7 +50,7 @@ namespace PlantPodServiceTests.Services.Persistence
         {
             var result = _sut.GetPlantById(_plantId);
 
-            result.Should().NotBeNull().And.BeEquivalentTo(Plant());
+            result.Should().NotBeNull().And.BeEquivalentTo(_plant);
         }
 
         [Test]
@@ -48,43 +60,5 @@ namespace PlantPodServiceTests.Services.Persistence
 
             result.Should().BeNull();
         }
-
-        private PlantEntity Plant() => new PlantEntity
-        {
-            Id = _plantId,
-            Care = "don't let it dry out",
-            Description = "just some random plant",
-            Image = "Todo Nika!",
-            LongName = "plant long name",
-            ShortName = "plant short name",
-            MaxHumidity = 30.4m,
-            Minph = 6.5m,
-            Maxph = 9.1m,
-            MaxTemperature = 35.7m,
-            MinHumidity = 13.2m,
-            MinTemperature = 12.4m,
-            Moisture = Moisture.Moist
-        };
-
-        private PlantEntity[] Plants() => new[]
-        {
-            Plant(),
-            new PlantEntity
-            {
-                Id = Guid.Parse("ded6f341-25da-4699-b4db-bdb5db6ecea4"),
-                Care = "don't make it too wet",
-                Description = "another random plant",
-                Image = "still a todo",
-                LongName = "plant B long name",
-                ShortName = "plant B short name",
-                MaxHumidity = 29.6m,
-                Minph = 3.9m,
-                Maxph = 8.4m,
-                MaxTemperature = 73.2m,
-                MinHumidity = 77.1m,
-                MinTemperature = 53.1m,
-                Moisture = Moisture.Dry
-            }
-        };
     }
 }

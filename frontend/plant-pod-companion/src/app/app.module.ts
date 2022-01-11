@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     PlantpediaPageComponent,
     RoomOverviewPageComponent,
     SensorOverviewComponent,
-    PlantpediaPageComponent
+    PlantpediaPageComponent,
+    RoomDetailsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,17 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatButtonModule,
     MatTooltipModule,
-    MatToolbarModule,
-    RouterModule.forRoot([
-      {
-        path: 'plantpedia',
-        component: PlantpediaPageComponent
-      },
-      {
-        path: 'room-overview',
-        component: RoomOverviewPageComponent
-      }
-    ])
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

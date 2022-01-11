@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using PlantPodService.Model;
 using PlantPodService.Services;
 using PlantPodService.Services.Persistence;
-using System;
+using PlantPodService.ViewModel;
 
 namespace PlantPodService
 {
@@ -25,10 +25,14 @@ namespace PlantPodService
         {
             services.AddControllers();
 			services.AddSingleton<ILiveDataService, LiveDataService>();
-            services.AddSingleton<IRoomService, RoomService>();
 
-            services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]));
-            services.AddScoped<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
+            services.AddSingleton<IRoomService, RoomService>();
+            services.AddSingleton<IPlantService, PlantService>();
+             
+            services.AddAutoMapper(typeof(MappingProfile));
+
+            services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]), optionsLifetime: ServiceLifetime.Singleton, contextLifetime: ServiceLifetime.Singleton);
+            services.AddSingleton<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

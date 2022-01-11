@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { room } from '../types/Room';
+import { Room } from '../types/Room';
+
 @Component({
   selector: 'app-room-overview-page',
   templateUrl: './room-overview-page.component.html',
@@ -8,11 +9,11 @@ import { room } from '../types/Room';
 
 export class RoomOverviewPageComponent implements OnInit {
 
-  Rooms: room[] | undefined;
+  rooms: Room[] | undefined;
 
 
   ngOnInit(): void {
-    this.Rooms = [
+    this.rooms = [
       {
         id: "1",
         sensorId: "1",
