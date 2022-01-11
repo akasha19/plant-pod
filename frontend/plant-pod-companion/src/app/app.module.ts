@@ -26,17 +26,7 @@ import { RoomDetailsPageComponent } from './room-details-page/room-details-page.
     MatCardModule,
     MatButtonModule,
     MatTooltipModule,
-    MatToolbarModule,
-    RouterModule.forRoot([
-      {
-        path: 'plantpedia',
-        component: PlantpediaPageComponent
-      },
-      {
-        path: 'room-details',
-        component: RoomDetailsPageComponent
-      }
-    ])
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
