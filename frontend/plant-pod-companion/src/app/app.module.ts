@@ -10,12 +10,14 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SensorOverviewComponent,
     PlantpediaPageComponent,
+    RoomDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         path: 'plantpedia',
         component: PlantpediaPageComponent
       },
+      {
+        path: 'room-details',
+        component: RoomDetailsPageComponent
+      }
     ])
   ],
   providers: [],

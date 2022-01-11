@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlantPodService.Model;
 
 namespace PlantPodService.Migrations
 {
     [DbContext(typeof(PlantPodServiceDbContext))]
-    partial class PlantPodServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211221004507_Add_plant_seeding_data")]
+    partial class Add_plant_seeding_data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
