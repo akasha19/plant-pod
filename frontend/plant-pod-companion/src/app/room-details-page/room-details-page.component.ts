@@ -11,7 +11,6 @@ export class RoomDetailsPageComponent implements OnInit {
 
   room: Room | undefined;
 
-
   ngOnInit(): void {
     this.room =
     {
@@ -21,7 +20,6 @@ export class RoomDetailsPageComponent implements OnInit {
       shortDescription: "A Living Room on the first floor of the house",
       facilities: ["Airconditioning", "Heating", "Humidifier"],
       imageSource: "../assets/img/aloevera.jpg"
-
     }
   }
 }
