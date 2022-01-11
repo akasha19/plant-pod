@@ -1,0 +1,23 @@
+@import '../app.component.scss';
+
+.vertical-line {
+display: block;
+width: auto;
+margin: 2rem;
+}
+
+.img {
+  width: 15rem;
+  height: 10rem;
+}
+
+.text-card-item {
+  width: 20rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.flex-container {
+  padding: 0;
+  display: flex;
+}
