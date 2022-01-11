@@ -1,14 +1,9 @@
 <div class="toolbar" role="banner">
   <img alt="Plantpod Logo" src="../assets/img/branding_S.png" />
+  <button mat-button onclick="location.href='/room-overview'" type="button" color="alternative">Room Overview</button>
   <button mat-button onclick="location.href='/plantpedia'" type="button" color="alternative">Plantpedia</button>
-  <button mat-button onclick="location.href='/room-details-overview'" type="button" color="alternative">Room
-    Overview</button>
-  <button mat-button onclick="location.href='/sensor-overview'" type="button" color="alternative">Sensor
-    Overview</button>
 </div>
 
 <div class="content" role="main">
-
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>
