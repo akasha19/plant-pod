@@ -13,7 +13,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 import { PlantDetailsPageComponent } from './plant-details-page/plant-details-page.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,4 +35,5 @@ import { PlantDetailsPageComponent } from './plant-details-page/plant-details-pa
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
