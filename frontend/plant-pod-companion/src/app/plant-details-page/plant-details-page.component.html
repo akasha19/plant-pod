@@ -3,9 +3,9 @@
 </mat-card>
 <mat-card class="main-card" *ngFor="let Plant of plants">
    <mat-card-header>
-      <mat-card-title class="text">{{ Plant.name }}</mat-card-title>
+      <mat-card-title class="title">{{ Plant.name }}</mat-card-title>
    </mat-card-header>
-   <mat-card-subtitle class="text">{{ Plant.description }}</mat-card-subtitle>
+   <mat-card-subtitle class="subtitle">{{ Plant.description }}</mat-card-subtitle>
    <mat-card class="text-card flex-container">
       <div class="text-card-item">
          <img class="img" src="{{Plant.imageSource}}">
@@ -15,7 +15,7 @@
       </div>
       <div class="text-card-item">
          <div>
-            <button mat-raised-button color="primary" class="vertical-line">room or plant info</button>
+            <button mat-raised-button color="primary" class="vertical-line">room info</button>
          </div>
       </div>
    </mat-card>
