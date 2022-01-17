@@ -14,7 +14,7 @@ const routes: Routes = [
     component: RoomOverviewPageComponent
   },
   {
-    path: 'plant-details-page',
+    path: 'plant-details',
     component: PlantDetailsPageComponent
   }
 ];
