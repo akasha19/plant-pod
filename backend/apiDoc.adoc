@@ -2,6 +2,8 @@
 
 NOTE: All request bodies have to be provided as JSON formatted string.
 
+Base path: http://localhost:8588
+
 == Submit sensor data (arduino)
 
 === POST `/sensors`
@@ -21,9 +23,9 @@ Example request::
 {
     "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
     "temperature": 14.3,
-    "humidity" = 40.3,
-    "moisture" = 53.7,
-    "ph" = 7.5
+    "humidity": 40.3,
+    "moisture": 53.7,
+    "ph": 7.5
 }
 
 Response::
@@ -47,9 +49,9 @@ Example response::
     {
         "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
         "temperature": 14.3,
-        "humidity" = 40.3,
-        "moisture" = 53.7,
-        "ph" = 7.5
+        "humidity": 40.3,
+        "moisture": 53.7,
+        "ph": 7.5
     },
     [...]
 ]
@@ -72,9 +74,9 @@ Example response::
 {
     "id": "196db225-e5ef-4636-b967-c214a0ddb73f",
     "temperature": 14.3,
-    "humidity" = 40.3,
-    "moisture" = 53.7,
-    "ph" = 7.5
+    "humidity": 40.3,
+    "moisture": 53.7,
+    "ph": 7.5
 }
 
 Response::

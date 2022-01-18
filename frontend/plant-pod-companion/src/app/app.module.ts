@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HttpClientModule } from '@angular/common/http';
+import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 
 export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
@@ -18,6 +18,7 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
     AppComponent,
     SensorOverviewComponent,
     PlantpediaPageComponent,
+    RoomDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,14 +27,7 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
     MatCardModule,
     MatButtonModule,
     MatTooltipModule,
-    MatToolbarModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      {
-        path: 'plantpedia',
-        component: PlantpediaPageComponent
-      },
-    ])
+    MatToolbarModule
   ],
   providers: [{ provide: SERVICE_URL, useValue: "http://localhost:8588/" }],
   bootstrap: [AppComponent]

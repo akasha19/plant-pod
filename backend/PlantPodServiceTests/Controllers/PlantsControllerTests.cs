@@ -17,8 +17,9 @@ namespace PlantPodServiceTests.Controllers
     {
         private readonly PlantsController _sut;
         private readonly IPlantService _plantService = A.Fake<IPlantService>(options => options.Strict());
-        private readonly Guid _idOne = Guid.NewGuid();
-        private readonly Guid _idTwo = Guid.NewGuid();
+        private readonly Guid _plantId = Guid.NewGuid();
+        private readonly Plant _plant;
+        private readonly Plant[] _plants;
 
         public PlantsControllerTests()
         {
@@ -27,15 +28,32 @@ namespace PlantPodServiceTests.Controllers
             var mapper = new Mapper(new MapperConfiguration(config));
             
             _sut = new PlantsController(_plantService, mapper);
+
+            var plantEntity = PlantFactory.PlantEntity(_plantId);
+            _plant = PlantFactory.Plant(_plantId);
+            var plantIdTwo = Guid.NewGuid();
+            var plantEntities = new[]
+            {
+                plantEntity,
+                PlantFactory.PlantEntity(plantIdTwo)
+            };
+            _plants = new[]
+            {
+                _plant,
+                PlantFactory.Plant(plantIdTwo)
+            };
+
+            A
+                .CallTo(() => _plantService.GetAllPlants())
+                .Returns(plantEntities);
+            A
+                .CallTo(() => _plantService.GetPlantById(_plantId))
+                .Returns(PlantFactory.PlantEntity(_plantId));
         }
 
         [Test]
         public void GetAllPlants_ReturnsOkObjectResult()
         {
-            A
-                .CallTo(() => _plantService.GetAllPlants())
-                .Returns(new []{ PlantFactory.PlantEntity() });
-
             var result = _sut.GetAllPlants();
 
             result.Should().BeOfType<OkObjectResult>();
@@ -44,61 +62,40 @@ namespace PlantPodServiceTests.Controllers
         [Test]
         public void GetAllPlants_ReturnsAllPlants()
         {
-            var plantEntities = new[]
-            {
-                PlantFactory.PlantEntity(_idOne),
-                PlantFactory.PlantEntity(_idTwo)
-            };
-            var plants = new[]
-            {
-                PlantFactory.Plant(_idOne),
-                PlantFactory.Plant(_idTwo)
-            };
-            A
-                .CallTo(() => _plantService.GetAllPlants())
-                .Returns(plantEntities);
-
             var result = _sut.GetAllPlants();
 
             var okObject = (OkObjectResult) result;
-            okObject?.Value.Should().BeEquivalentTo(plants);
+            okObject?.Value.Should().BeEquivalentTo(_plants);
         }
 
         [Test]
         public void GetPlantById_ReturnsOkObjectResult()
         {
-            A
-                .CallTo(() => _plantService.GetPlantById(_idOne))
-                .Returns(PlantFactory.PlantEntity());
-
-            var result = _sut.GetPlantById(_idOne.ToString());
+            var result = _sut.GetPlantById(_plantId.ToString());
 
             result.Should().BeOfType<OkObjectResult>();
+            var okObject = (OkObjectResult)result;
+            okObject?.Value.Should().BeEquivalentTo(_plant);
         }
 
         [Test]
         public void GetPlantById_ReturnsCorrectPlant()
         {
-            var plantEntity = PlantFactory.PlantEntity(_idOne);
-            var plant = PlantFactory.Plant(_idOne);
-            A
-                .CallTo(() => _plantService.GetPlantById(plantEntity.Id))
-                .Returns(plantEntity);
+            var result = _sut.GetPlantById(_plantId.ToString());
 
-            var result = _sut.GetPlantById(plantEntity.Id.ToString());
-
-            var okObject = (OkObjectResult) result;
-            okObject?.Value.Should().BeEquivalentTo(plant);
+            result.Should().BeOfType<OkObjectResult>();
+            var okObject = (OkObjectResult)result;
+            okObject?.Value.Should().BeEquivalentTo(_plant);
         }
 
         [Test]
         public void GetPlantById_ReturnsNotFoundOnUnknownId()
         {
             A
-                .CallTo(() => _plantService.GetPlantById(_idOne))
-                .Returns(null);
+                .CallTo(() => _plantService.GetPlantById(_plantId))
+                .Returns(null).Once();
 
-            var result = _sut.GetPlantById(_idOne.ToString());
+            var result = _sut.GetPlantById(_plantId.ToString());
 
             result.Should().BeOfType<NotFoundObjectResult>();
         }
