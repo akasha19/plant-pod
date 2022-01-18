@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 
+export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { RoomDetailsPageComponent } from './room-details-page/room-details-page.
     MatTooltipModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [{ provide: SERVICE_URL, useValue: "http://localhost:8588/" }],
   bootstrap: [AppComponent]
 })
 
