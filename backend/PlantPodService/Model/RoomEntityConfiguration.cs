@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PlantPodService.Model
 {
@@ -8,6 +11,21 @@ namespace PlantPodService.Model
     {
         public void Configure(EntityTypeBuilder<RoomEntity> builder)
         {
+            builder
+                .Property(e => e.Facilities)
+                .HasConversion(
+                    v => string.Join(';', v),
+                    v => v.Split(';', StringSplitOptions.RemoveEmptyEntries));
+
+            var valueComparer = new ValueComparer<string[]>(
+                (c1, c2) => c1.SequenceEqual(c2),
+                c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())));
+
+            builder
+                .Property(e => e.Facilities)
+                .Metadata
+                .SetValueComparer(valueComparer);
+
             builder.HasData(Rooms());
         }
 
