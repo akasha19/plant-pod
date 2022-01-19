@@ -29,6 +29,18 @@
     color: white;
 }
 
+.main-card.yellow{
+    background-color: $yellow;
+    text-align: center;
+    color: white;
+}
+
+.main-card.red{
+    background-color: $red;
+    text-align: center;
+    color: white;
+}
+
 .content {
     display: flex;
     margin: 1rem;

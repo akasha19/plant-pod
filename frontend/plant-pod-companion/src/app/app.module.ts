@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
+import { WarningComponent } from './warning/warning.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RoomDetailsPageComponent } from './room-details-page/room-details-page.
     SensorOverviewComponent,
     PlantpediaPageComponent,
     RoomDetailsPageComponent,
+    WarningComponent,
   ],
   imports: [
     BrowserModule,
