@@ -20,8 +20,6 @@ namespace PlantPodServiceTests.Factories
             SensorId = sensorId
         };
 
-        public static Room Room(Guid id) => Room(id, Guid.NewGuid());
-
         public static Room Room(Guid id, Guid sensorId) => new Room
         {
             Id = id,
