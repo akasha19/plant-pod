@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 
 export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
@@ -18,7 +19,8 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
     AppComponent,
     SensorOverviewComponent,
     PlantpediaPageComponent,
-    RoomDetailsPageComponent
+    RoomDetailsPageComponent,
+    LoadingIndicatorComponent
   ],
   imports: [
     BrowserModule,

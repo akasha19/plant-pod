@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { SERVICE_URL } from '../app.module';
 import { Room } from '../types/Room';
+import { Response } from './Response'
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +35,4 @@ export class RoomsService {
         return of({ success: false, message: error.message });
       }));
   }
-}
-
-export interface Response<T> {
-  success: boolean;
-  data?: T;
-  message?: string;
 }
