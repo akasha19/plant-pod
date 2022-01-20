@@ -24,5 +24,7 @@
     <loading-indicator></loading-indicator>
 </ng-template>
 
-<!-- Error popup here -->
-<div *ngIf="error.error">Error: {{error.message}}</div>
+<div *ngIf="error.hasError">
+    <!-- Todo: Error popup here -->
+    Error: {{error.message}}
+</div>

@@ -3,6 +3,7 @@ import { Room } from "../types/Room";
 import { RoomsService } from '../services/rooms.service';
 import { map, Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { RequestError } from '../types/RequestError';
 
 @Component({
   selector: 'app-room-details-page',
@@ -14,7 +15,7 @@ export class RoomDetailsPageComponent implements OnInit {
 
   id: string | undefined;
   room$: Observable<Room> | undefined;
-  error: { error: boolean, message?: string } = { error: false };
+  error: RequestError = { hasError: false };
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,7 @@ export class RoomDetailsPageComponent implements OnInit {
             if (value.success && value.data) {
               this.room$ = of(value.data)
             } else {
-              this.error = { error: true, message: value.message };
+              this.error = { hasError: true, message: value.message };
             }
           })).subscribe();
       }

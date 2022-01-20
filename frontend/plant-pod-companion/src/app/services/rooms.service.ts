@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { SERVICE_URL } from '../app.module';
 import { Room } from '../types/Room';
 import { Response } from './Response'
@@ -8,6 +8,7 @@ import { Response } from './Response'
 @Injectable({
   providedIn: 'root'
 })
+
 export class RoomsService {
   client: HttpClient;
   url: string;
@@ -17,11 +18,14 @@ export class RoomsService {
     this.url = `${baseUrl}rooms`;
   }
 
-  getRooms(): Observable<Room[] | undefined> {
+  getRooms(): Observable<Response<Room[]>> {
     return this.client.get<Room[]>(this.url)
+      .pipe(map((value) => {
+        return { success: true, data: value }
+      }))
       .pipe(catchError((error: HttpErrorResponse) => {
         console.error(`error while requesting rooms, status code: ${error.status}, message: ${error.message}`);
-        return of(undefined);
+        return of({ success: false, message: error.message });
       }));
   }
 
