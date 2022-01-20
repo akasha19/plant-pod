@@ -1,6 +1,11 @@
 <mat-card class="main-card title">
   <mat-card-title>Plantpedia</mat-card-title>
 </mat-card>
+
+<button mat-flat-button [routerLink]="['/room-details', '487ac8ee-0d70-4377-b216-0045182b7638']">room 1</button>
+<button mat-flat-button [routerLink]="['/room-details', '177bead7-1b35-46c5-83ad-026faefa2ca1']">room 2</button>
+
+
 <div *ngFor="let plant of (plants | async)">
   <mat-card class="main-card">
     <mat-card-header>

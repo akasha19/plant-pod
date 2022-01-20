@@ -1,11 +1,11 @@
 <mat-card class="main-card title">
     <mat-card-title>Room Overview</mat-card-title>
 </mat-card>
-<div *ngIf="room != undefined">
+<div *ngIf="(room$ | async) as room; else loadingIndicator">
     <mat-card class="main-card">
         <mat-card-header>
-            <mat-card-title>{{room.roomName}}</mat-card-title>
-            <mat-card-subtitle>{{room.shortDescription}}</mat-card-subtitle>
+            <mat-card-title>{{room.name}}</mat-card-title>
+            <mat-card-subtitle>{{room.description}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="wrapper">
             <div class="half"><img class="fit" src={{room.imageSource}}> </div>
@@ -19,3 +19,10 @@
         </mat-card-content>
     </mat-card>
 </div>
+
+<ng-template #loadingIndicator>
+    <mat-spinner class="centered"></mat-spinner>
+</ng-template>
+
+<!-- Error popup here -->
+<div *ngIf="error.error">Error: {{error.message}}</div>

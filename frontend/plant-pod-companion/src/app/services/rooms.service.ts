@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { SERVICE_URL } from '../app.module';
 import { Room } from '../types/Room';
 
@@ -24,13 +24,20 @@ export class RoomsService {
       }));
   }
 
-  getRoomById(id: string): Observable<Room | undefined> {
+  getRoomById(id: string): Observable<Response<Room>> {
     return this.client.get<Room>(`${this.url}/${id}`)
-      //debug
-      .pipe(tap((value) => console.log(value)))
+      .pipe(map((value: Room) => {
+        return { success: true, data: value }
+      }))
       .pipe(catchError((error: HttpErrorResponse) => {
-        console.error(`error while requesting rooms, status code: ${error.status}, message: ${error.message}`);
-        return of(undefined);
+        console.error(`error while requesting room, status code: ${error.status}, message: ${error.message}`);
+        return of({ success: false, message: error.message });
       }));
   }
+}
+
+export interface Response<T> {
+  success: boolean;
+  data?: T;
+  message?: string;
 }

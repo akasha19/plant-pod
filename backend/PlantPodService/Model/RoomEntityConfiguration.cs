@@ -33,7 +33,7 @@ namespace PlantPodService.Model
         {
             new RoomEntity()
             {
-                Id = Guid.Parse("487ac8ee-0d70-4377-b216-0045182b7638 "),
+                Id = Guid.Parse("487ac8ee-0d70-4377-b216-0045182b7638"),
                 SensorId = Guid.Parse("196db225-e5ef-4636-b967-c214a0ddb73f"),
                 Name = "Presentation room",
                 Description = "presentation room for 100 people",
