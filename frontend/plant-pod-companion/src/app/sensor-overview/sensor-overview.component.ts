@@ -18,10 +18,10 @@ export class SensorOverviewComponent implements OnInit {
 
     this.sensor = {
       id: this.id ?? "",
-      humidity: 2,
+      humidity: 52,
       ph: 5,
-      temperature: 8,
-      moisture: 4,
+      temperature: 18,
+      moisture: "Moist",
     }
 
   }

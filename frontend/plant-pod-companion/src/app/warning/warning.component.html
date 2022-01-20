@@ -1,47 +1,58 @@
 <!--Warning Temp Low-->
-<mat-card class="main-card yellow">
+<div *ngFor="let sensor of sensors">
+<mat-card *ngIf="sensor.temperature < 18" class="main-card yellow">
   <mat-card-title>Temperature Warning</mat-card-title>
-  <mat-card-subtitle class="align"><B>The temperature in room.name is too low. Try turning on the heater or closing the window(s) to heat up the room.</B><br> A cold room could cause discomfort and a higher chance of sickness for persons in the room. With low temperature, plants in this room will have trouble growing.</mat-card-subtitle>
+  <mat-card-subtitle class="align"><B>The temperature in {{roomNames[sensor.id]}} is too low. Try turning on the heater or closing the window(s) to heat up the room.</B>
+    <br> A cold room could cause discomfort and a higher chance of sickness for persons in the room. With low temperature, plants in this room will have trouble growing.</mat-card-subtitle>
 </mat-card>
 
 <!--Warning Temp High-->
-<mat-card class="main-card yellow">
+<mat-card *ngIf="sensor.temperature > 23" class="main-card yellow">
   <mat-card-title>Temperature Warning</mat-card-title>
-  <mat-card-subtitle class="align"><B>The temperature in room.name is too high. Try turning off the heater or opening the window(s) to cool down the room.</B><br> A hot room could cause discomfort, fatigue or headaches for persons in the room. With a high temperature, plants in this room will have risk of drying out and could eventually die.</mat-card-subtitle>
+  <mat-card-subtitle class="align"><B>The temperature in {{roomNames[sensor.id]}} is too high. Try turning off the heater or opening the window(s) to cool down the room.</B>
+    <br> A hot room could cause discomfort, fatigue or headaches for persons in the room. With a high temperature, plants in this room will have risk of drying out and could eventually die.</mat-card-subtitle>
 </mat-card>
 
 <!--Warning Humidity Low-->
-<mat-card class="main-card yellow">
+<mat-card *ngIf="sensor.humidity < 40" class="main-card yellow">
   <mat-card-title>Humidity Warning</mat-card-title>
-  <mat-card-subtitle class="align"><B>The humidity in room.name is too low. Try turning on a humidifier or opening the window(s) to increase the humidity in this room.</B><br> A dry room could cause dry skin and eyes, cracked lips but also cracly wood furniture. Some plants will dry out and eventually die from low humidity.</mat-card-subtitle>
+  <mat-card-subtitle class="align"><B>The humidity in {{roomNames[sensor.id]}} is too low. Try turning on a humidifier or opening the window(s) to increase the humidity in this room.</B>
+    <br> A dry room could cause dry skin and eyes, cracked lips but also cracly wood furniture. Some plants will dry out and eventually die from low humidity.</mat-card-subtitle>
 </mat-card>
 
 <!--Warning Humidity High-->
-<mat-card class="main-card yellow">
+<mat-card *ngIf="sensor.humidity > 55" class="main-card yellow">
   <mat-card-title>Humidity Warning</mat-card-title>
-  <mat-card-subtitle class="align"><B>The humidity in room.name is too high. Try turning on a dehumidifier or opening the window(s) to decrease the humidity in this room.</B><br> A humid room could cause fatigue, heat exhaution or fainting, humid areas could also attract fungi which can cause health issues. Some plants will get mould out and could die when an area is too humid.</mat-card-subtitle>
+  <mat-card-subtitle class="align"><B>The humidity in {{roomNames[sensor.id]}} is too high. Try turning on a dehumidifier or opening the window(s) to decrease the humidity in this room.</B>
+    <br> A humid room could cause fatigue, heat exhaution or fainting, humid areas could also attract fungi which can cause health issues. Some plants will get mould out and could die when an area is too humid.</mat-card-subtitle>
 </mat-card>
 
 <!--Warning pH level Low-->
-<mat-card class="main-card yellow">
+<mat-card *ngIf="sensor.ph < 5" class="main-card yellow">
   <mat-card-title>Plant pH level Warning</mat-card-title>
-  <mat-card-subtitle class="align"><B>The pH of the soil in room.name is too low.  Adding granulated limestone to the soil will help increase the pH of the soil.</B><br>A pH that is too high for the plant, could eventually kill the plant due to root rot and root decay.</mat-card-subtitle>
+  <mat-card-subtitle class="align"><B>The pH of the soil in {{roomNames[sensor.id]}} is too low.  Adding granulated limestone to the soil will help increase the pH of the soil.</B>
+    <br>A pH that is too high for the plant, could eventually kill the plant due to root rot and root decay.</mat-card-subtitle>
 </mat-card>
 
 <!--Warning pH level High-->
-<mat-card class="main-card yellow">
+<mat-card *ngIf="sensor.ph > 8.5" class="main-card yellow">
   <mat-card-title>Plant pH level Warning</mat-card-title>
-  <mat-card-subtitle class="align"><B>The pH of the soil of the plant in room.name is too high. Try adding a small amount of aluminium sulfate or elemental sulfur in order to lower the pH.</B><br>A pH that is too high for the plant, could eventually kill the plant due to root rot and root decay.</mat-card-subtitle>
+  <mat-card-subtitle class="align"><B>The pH of the soil of the plant in {{roomNames[sensor.id]}} is too high. Try adding a small amount of aluminium sulfate or elemental sulfur in order to lower the pH.</B>
+    <br>A pH that is too high for the plant, could eventually kill the plant due to root rot and root decay.</mat-card-subtitle>
 </mat-card>
 
 <!--Warning Moisture level Low-->
-<mat-card class="main-card yellow">
+<!-- <mat-card *ngIf="sensor.moisture < 18" class="main-card yellow">
   <mat-card-title>Plant Moisture Warning</mat-card-title>
-  <mat-card-subtitle class="align"><b>The moisture level of the soil of the plant in room.name is too low. Try adding some water or make sure the soil is able to hold enough moisture.</b><br></mat-card-subtitle>
-</mat-card>
+  <mat-card-subtitle class="align"><b>The moisture level of the soil of the plant in {{roomNames[sensor.id]}} is too low. Try adding some water or make sure the soil is able to hold enough moisture.</b>
+    <br>When the moisture level is too low, the plant could dry out and eventually die. The growth strength of the plant is also greatly diminished from dry soil.</mat-card-subtitle>
+</mat-card> -->
 
 <!--Warning Moisture level High-->
-<mat-card class="main-card yellow">
+<!-- <mat-card *ngIf="sensor.moisture < 18" class="main-card yellow">
   <mat-card-title>Plant Moisture Warning</mat-card-title>
-  <mat-card-subtitle class="align"><b>The moisture level of the soil of the plant in room.name is too high. Try draining some water from the soil and make sure the soil is able to drain excess moisture properly.</b><br></mat-card-subtitle>
-</mat-card>
+  <mat-card-subtitle class="align"><b>The moisture level of the soil of the plant in {{roomNames[sensor.id]}} is too high. Try draining some water from the soil and make sure the soil is able to drain excess moisture properly.</b>
+    <br>When the moisture level is too high, root rot could occur which could kill the plant eventually.</mat-card-subtitle>
+</mat-card> -->
+
+</div>
