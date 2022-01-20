@@ -6,11 +6,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SensorOverviewComponent } from './sensor-overview/sensor-overview.component';
 import { MatCardModule } from "@angular/material/card";
 import { PlantpediaPageComponent } from './plantpedia-page/plantpedia-page.component';
-import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
@@ -18,7 +18,7 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
     AppComponent,
     SensorOverviewComponent,
     PlantpediaPageComponent,
-    RoomDetailsPageComponent,
+    RoomDetailsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,8 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
     MatCardModule,
     MatButtonModule,
     MatTooltipModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
   ],
   providers: [{ provide: SERVICE_URL, useValue: "http://localhost:8588/" }],
   bootstrap: [AppComponent]
