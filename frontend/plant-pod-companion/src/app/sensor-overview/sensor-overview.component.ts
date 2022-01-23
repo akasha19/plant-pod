@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LiveDataService } from '../services/live-data.service';
 import { Sensor } from '../types/Sensor';
 
 @Component({
@@ -14,6 +15,9 @@ export class SensorOverviewComponent implements OnInit {
 
   sensor: Sensor | undefined;
 
+  constructor(liveDataService: LiveDataService) {
+  }
+
   ngOnInit(): void {
 
     this.sensor = {
@@ -23,6 +27,8 @@ export class SensorOverviewComponent implements OnInit {
       temperature: 8,
       moisture: 4,
     }
+
+
 
   }
 }

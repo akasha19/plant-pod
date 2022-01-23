@@ -8,6 +8,7 @@ using PlantPodService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using PlantPodService.Controllers.LiveDataServerSideEvent;
 
 namespace PlantPodServiceTests.Controllers
 {
