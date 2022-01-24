@@ -1,12 +1,10 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PlantPodService.Controllers.LiveDataWebSocket;
+using PlantPodService.Controllers;
 using PlantPodService.Model;
 using PlantPodService.Services;
 using PlantPodService.Services.Persistence;
@@ -71,8 +69,6 @@ namespace PlantPodService
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseWebSockets();
 
             app.UseEndpoints(endpoints =>
             {

@@ -8,19 +8,13 @@ namespace PlantPodService.Services
 {
     public interface ILiveDataService
     {
-        public event EventHandler NewLiveDataAvailable;
-
         public void SetSensorData(Sensor data);
 
-        public IImmutableList<Sensor> GetSensorData();
-
-        public Sensor GetSensorDataById(Guid id);
+        public ImmutableArray<Sensor> GetSensorData();
     }
 
     public sealed class LiveDataService : ILiveDataService
     {
-        public event EventHandler NewLiveDataAvailable;
-
         private readonly Dictionary<Guid, Sensor> _sensorData = new Dictionary<Guid, Sensor>();
 
         public LiveDataService(IRoomService roomService)
@@ -31,22 +25,9 @@ namespace PlantPodService.Services
             }
         }
 
-        public IImmutableList<Sensor> GetSensorData()
+        public ImmutableArray<Sensor> GetSensorData()
         {
-            return _sensorData.Values.ToImmutableList();
-        }
-
-        public Sensor GetSensorDataById(Guid id)
-        {
-            try
-            {
-                var data = _sensorData[id];
-                return data;
-            }
-            catch (KeyNotFoundException)
-            {
-                return null;
-            }
+            return _sensorData.Values.ToImmutableArray();
         }
 
         public void SetSensorData(Sensor data)
@@ -61,14 +42,6 @@ namespace PlantPodService.Services
             }
 
             _sensorData[(Guid)data.Id] = data;
-            OnNewLiveDataAvailable(EventArgs.Empty);
-
-        }
-
-        private void OnNewLiveDataAvailable(EventArgs e)
-        {
-            var handler = NewLiveDataAvailable;
-            handler?.Invoke(this, e);
         }
     }
 }
