@@ -22,6 +22,7 @@ export class SensorOverviewComponent implements OnInit {
       ph: 5,
       temperature: 8,
       moisture: 4,
+      airquality: "good"
     }
 
   }
