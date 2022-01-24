@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { WebsocketBuilder } from 'websocket-ts/lib';
 import { SERVICE_URL } from '../app.module';
 import { Sensor } from '../types/Sensor';
 
@@ -9,20 +10,25 @@ import { Sensor } from '../types/Sensor';
 export class LiveDataService {
   client: HttpClient;
   url: string;
-  eventSource: EventSource;
-
-  eventData: Sensor | undefined;
+  evententData: Sensor | undefined;
 
   constructor(httpClient: HttpClient, @Inject(SERVICE_URL) baseUrl: string) {
     this.client = httpClient;
-    this.url = `${baseUrl}sse`;
+    this.url = `${baseUrl.replace("http", "ws")}livedata`;
 
-    this.eventSource = new EventSource(this.url);
+    const ws = new WebsocketBuilder(this.url)
+      .onOpen((_, event) => { console.log("opened") })
+      .onClose((_, event) => { console.log("closed") })
+      .onError((_, event) => { console.error(`websocket error: ${event}`) })
+      .onMessage((_, event) => { this.onMessage(event.data) })
+      .build();
 
-    this.eventSource.addEventListener("event name", (e) => {
-      const event = (e as MessageEvent);  // <== This line is Important!!
-      this.eventData = JSON.parse(event.data);
-      console.log(this.eventData);
-    });
+    ws.send("test")
+  }
+
+  onMessage(data: string): void {
+    let jsonObject: any = JSON.parse(data);
+    let sensor: Sensor = <Sensor>jsonObject;
+    console.log(sensor.id)
   }
 }

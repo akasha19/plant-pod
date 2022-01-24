@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -66,6 +67,8 @@ namespace PlantPodService
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseWebSockets();
 
             app.UseEndpoints(endpoints =>
             {
