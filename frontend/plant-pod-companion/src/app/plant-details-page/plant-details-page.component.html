@@ -9,11 +9,10 @@
       <div class="text-card-item">
          <img class="img" src="{{plant.imageSource}}">
       </div>
-      <div class="text-card-item">
-         <p class="text">Temperature: {{ sensor.temperature }}</p>
-            <p class="text">Moisture: {{ sensor.moisture }}</p>
-            <p class="text">Humidity: {{ sensor.humidity }}</p>
-      </div>
+      <sensor-overview [id]="plant.id" class="text-card-item plant-card">
+
+      </sensor-overview>
+
       <div class="text-card-item">
          <div>
             <button mat-raised-button color="primary" class="vertical-line">Room info</button>
