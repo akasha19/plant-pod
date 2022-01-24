@@ -12,6 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 import { WarningComponent } from './warning/warning.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { WarningComponent } from './warning/warning.component';
     PlantpediaPageComponent,
     RoomDetailsPageComponent,
     WarningComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
