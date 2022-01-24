@@ -18,10 +18,20 @@ namespace PlantPodService.Controllers.LiveDataServerSideEvent
     public class LiveDataController : ControllerBase
     {
         private readonly ILiveDataService _liveDataService;
+        private WebSocket _webSocket;
 
         public LiveDataController(ILiveDataService liveDataService)
         {
             _liveDataService = liveDataService;
+            _liveDataService.NewLiveDataAvailable += OnNewLiveDataAvailable;
+        }
+
+        private async void OnNewLiveDataAvailable(object sender, EventArgs e)
+        {
+            if (_webSocket != null)
+            {
+                await SendData();
+            }
         }
 
         [HttpGet("")]
@@ -29,9 +39,9 @@ namespace PlantPodService.Controllers.LiveDataServerSideEvent
         {
             if (HttpContext.WebSockets.IsWebSocketRequest)
             {
-                using WebSocket webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+                _webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
                 
-                await SendData(HttpContext, webSocket);
+                //await SendData(_webSocket);
             }
             else
             {
@@ -39,7 +49,7 @@ namespace PlantPodService.Controllers.LiveDataServerSideEvent
             }
         }
 
-        private async Task SendData(HttpContext context, WebSocket webSocket)
+        private async Task SendData()
         {
             var sensor = new Sensor()
             {
@@ -55,12 +65,17 @@ namespace PlantPodService.Controllers.LiveDataServerSideEvent
 
             while (true)
             {
-                await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
+                await _webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
                 
                 Thread.Sleep(5000);
             }
         }
+
     }
+
+
+
+
 
     namespace SystemTextJsonSamples
     {

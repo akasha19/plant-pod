@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
+using PlantPodService.Controllers.LiveDataWebSocket;
 
 namespace PlantPodService
 {
@@ -7,7 +9,9 @@ namespace PlantPodService
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            var hubContext = host.Services.GetService(typeof(IHubContext<LiveDataHub>));
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -8,6 +8,8 @@ namespace PlantPodService.Services
 {
     public interface ILiveDataService
     {
+        public event EventHandler NewLiveDataAvailable;
+
         public void SetSensorData(Sensor data);
 
         public IImmutableList<Sensor> GetSensorData();
@@ -17,6 +19,8 @@ namespace PlantPodService.Services
 
     public sealed class LiveDataService : ILiveDataService
     {
+        public event EventHandler NewLiveDataAvailable;
+
         private readonly Dictionary<Guid, Sensor> _sensorData = new Dictionary<Guid, Sensor>();
 
         public LiveDataService(IRoomService roomService)
@@ -57,6 +61,14 @@ namespace PlantPodService.Services
             }
 
             _sensorData[(Guid)data.Id] = data;
+            OnNewLiveDataAvailable(EventArgs.Empty);
+
+        }
+
+        private void OnNewLiveDataAvailable(EventArgs e)
+        {
+            var handler = NewLiveDataAvailable;
+            handler?.Invoke(this, e);
         }
     }
 }
