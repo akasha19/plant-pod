@@ -1,7 +1,7 @@
 <mat-card class="main-card title">
    <mat-card-title>Room Overview</mat-card-title>
 </mat-card>
-<mat-card class="main-card" *ngFor="let room of rooms">
+<mat-card class="main-card container" *ngFor="let room of rooms">
    <mat-card-header>
       <mat-card-title class="title">{{ room.name }}</mat-card-title>
       <mat-card-subtitle>{{ room.description }}</mat-card-subtitle>
@@ -15,12 +15,9 @@
       <div class="text-card-item">
          <img class="img" src="{{room.imageSource}}">
       </div>
-      <div class="text-card-item">
-          <p class="text">pH: {{ sensor.ph }}</p>
-          <p class="text">Moisture: {{ sensor.moisture }}</p>
-          <p class="text">Temperature: {{ sensor.temperature }}</p>
-          <p class="text">Humidity: {{ sensor.humidity }}</p>
-      </div>
+    <sensor-overview [id]="room.id" class="text-card-item">
+
+    </sensor-overview>
       <div class="text-card-item">
          <div>
             <button mat-raised-button color="primary" class="vertical-line">plant info</button>

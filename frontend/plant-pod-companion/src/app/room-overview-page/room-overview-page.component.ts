@@ -12,7 +12,7 @@ export class RoomOverviewPageComponent {
 
   rooms: Room[] | undefined;
 
-  sensor : Sensor;
+  
 
 
   constructor() {
@@ -24,19 +24,16 @@ export class RoomOverviewPageComponent {
         description: "presentation room for 100 people",
         facilities: ['Airconditioning', 'heating', 'smartprojector', 'smartplants'],
         imageSource: "assets/img/room_1.jpg"
+      },
+      {
+        id: "2",
+        sensorId: "2",
+        name: "Presentation room",
+        description: "presentation room for 1 alien",
+        facilities: ['Airconditioning', 'heating', 'smartprojector', 'smartplants'],
+        imageSource: "assets/img/room_1.jpg"
       }
     ]
-
-    this.sensor =
-   {
-     id: "1",
-     ph: 7.0,
-     moisture: 50,
-     temperature: 20,
-    humidity: 94.3,
-    airquality: "good"
-
-   }
 
   }
 }

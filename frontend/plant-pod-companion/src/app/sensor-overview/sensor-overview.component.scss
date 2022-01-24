@@ -1,14 +1,15 @@
 @import "../app.component.scss";
 
 .sensor-overview{
-    width: 45%;
     left: 50%;
     transform: translate(-50%, 0);
     max-width: 20rem;
+    margin-top: 0.8rem;
+    margin-left:1.5rem;
 }
 
 table{
-    width: 100%;   
+    width: 100%;
 }
 
 .right-align{
