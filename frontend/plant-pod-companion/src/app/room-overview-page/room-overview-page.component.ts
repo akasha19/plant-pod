@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Room } from '../types/Room';
-import { Sensor} from '../types/Sensor';
 
 @Component({
   selector: 'app-room-overview-page',
@@ -11,9 +10,6 @@ import { Sensor} from '../types/Sensor';
 export class RoomOverviewPageComponent {
 
   rooms: Room[] | undefined;
-
-  
-
 
   constructor() {
     this.rooms = [
@@ -34,6 +30,5 @@ export class RoomOverviewPageComponent {
         imageSource: "assets/img/room_1.jpg"
       }
     ]
-
   }
 }
