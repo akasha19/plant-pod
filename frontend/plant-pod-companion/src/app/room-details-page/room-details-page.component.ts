@@ -4,6 +4,7 @@ import { RoomsService } from '../services/rooms.service';
 import { map, Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { RequestError } from '../types/RequestError';
+import { OverviewType } from '../types/OverviewType';
 
 @Component({
   selector: 'app-room-details-page',
@@ -16,6 +17,8 @@ export class RoomDetailsPageComponent implements OnInit {
   id: string | undefined;
   room$: Observable<Room> | undefined;
   error: RequestError = { hasError: false };
+
+  readonly overviewType: string = OverviewType.Room.toString()
 
   constructor(
     private route: ActivatedRoute,

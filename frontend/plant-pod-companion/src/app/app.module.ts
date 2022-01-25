@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SensorOverviewComponent } from './sensor-overview/sensor-overview.component';
 import { MatCardModule } from "@angular/material/card";
 import { PlantpediaPageComponent } from './plantpedia-page/plantpedia-page.component';
+import { RoomOverviewPageComponent } from './room-overview-page/room-overview-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,6 +18,7 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
   declarations: [
     AppComponent,
+    RoomOverviewPageComponent,
     SensorOverviewComponent,
     PlantpediaPageComponent,
     RoomDetailsPageComponent,
