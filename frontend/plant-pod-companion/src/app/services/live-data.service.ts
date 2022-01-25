@@ -1,8 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { SERVICE_URL } from '../app.module';
 import { Sensor } from '../types/Sensor';
 import * as signalR from "@microsoft/signalr";
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import * as signalR from "@microsoft/signalr";
 export class LiveDataService {
   client: HttpClient;
   url: string;
-  evententData: Sensor | undefined;
+  sensorData$: BehaviorSubject<Sensor[]>;
 
   constructor(httpClient: HttpClient, @Inject(SERVICE_URL) baseUrl: string) {
     this.client = httpClient;
@@ -23,12 +24,18 @@ export class LiveDataService {
       })
       .build();
 
-    connection.on("ReceiveMessage", (message: string) => {
-      console.log(message)
+    connection.on("SensorData", (message: string) => {
+      this.onNewSensorData(message)
     });
 
-    connection.start().catch(err => document.write(err));
+    connection.start().catch(err => console.error(err));
+
+    this.sensorData$ = new BehaviorSubject(new Array<Sensor>())
   }
 
+  onNewSensorData(data: string): void {
+    let sensors: Sensor[] = JSON.parse(data);
 
+    this.sensorData$?.next(sensors);
+  }
 }

@@ -15,7 +15,7 @@ export class RoomDetailsPageComponent implements OnInit {
     this.room =
     {
       id: "1",
-      sensorId: "1",
+      sensorId: "196db225-e5ef-4636-b967-c214a0ddb73f",
       roomName: "Living Room",
       shortDescription: "A Living Room on the first floor of the house",
       facilities: ["Airconditioning", "Heating", "Humidifier"],
