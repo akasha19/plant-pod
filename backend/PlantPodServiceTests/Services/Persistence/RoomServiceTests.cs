@@ -1,22 +1,73 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using PlantPodService.Services.Persistence;
 using System;
 using System.Collections.Immutable;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using PlantPodService.Model;
+using PlantPodService.Services.Persistence;
+using PlantPodServiceTests.Factories;
 
 namespace PlantPodServiceTests.Services.Persistence
 {
     [TestFixture]
     class RoomServiceTests
     {
-        protected IRoomService Sut = new RoomService();
+        private readonly IRoomService _sut;
+        private readonly Guid _roomId = Guid.NewGuid();
+        private readonly RoomEntity _room;
+        private readonly RoomEntity[] _rooms;
+
+        public RoomServiceTests()
+        {
+            var options = new DbContextOptionsBuilder<PlantPodServiceDbContext>()
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .Options;
+
+            var dbContext = new PlantPodServiceDbContext(options);
+
+            _rooms = new[]
+            {
+                RoomFactory.RoomEntity(_roomId),
+                RoomFactory.RoomEntity()
+            };
+            _room = _rooms.First();
+
+            dbContext.Rooms.AddRange(_rooms);
+            dbContext.SaveChanges();
+            _sut = new RoomService(dbContext);
+        }
 
         [Test]
-        public void GetSensorIds_ShouldReturnCorrectId()
+        public void GetAllRooms_ReturnsAllRooms()
         {
-            var result = Sut.GetSensorIds();
+            var result = _sut.GetAllRooms();
 
-            result.Should().BeEquivalentTo(new [] {Guid.Parse("196db225-e5ef-4636-b967-c214a0ddb73f")}.ToImmutableArray());
+            result.Should().BeEquivalentTo(_rooms);
+        }
+
+        [Test]
+        public void GetRoomById_ReturnsCorrectRoom()
+        {
+            var result = _sut.GetRoomById(_roomId);
+
+            result.Should().NotBeNull().And.BeEquivalentTo(_room);
+        }
+
+        [Test]
+        public void GetRoomById_ReturnsNullOnUnknownId()
+        {
+            var result = _sut.GetRoomById(Guid.NewGuid());
+
+            result.Should().BeNull();
+        }
+
+        [Test]
+        public void GetSensorIds_ReturnsCorrectIds()
+        {
+            var result = _sut.GetSensorIds();
+
+            result.Should().BeEquivalentTo(_rooms.Select(t => t.SensorId).ToImmutableArray());
         }
     }
 }

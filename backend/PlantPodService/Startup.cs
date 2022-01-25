@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PlantPodService.Controllers;
 using PlantPodService.Model;
 using PlantPodService.Services;
 using PlantPodService.Services.Persistence;
@@ -13,6 +14,8 @@ namespace PlantPodService
 {
     public class Startup
     {
+        private const string DefaultCorsPolicy = "DefaultCorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,6 +36,22 @@ namespace PlantPodService
 
             services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]), optionsLifetime: ServiceLifetime.Singleton, contextLifetime: ServiceLifetime.Singleton);
             services.AddSingleton<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
+
+            services.AddSignalR();
+
+            services.AddCors(
+                options =>
+                {
+                    options.AddPolicy(
+                        DefaultCorsPolicy,
+                        builder =>
+                        {
+                            builder
+                                .AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                        });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +62,8 @@ namespace PlantPodService
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(DefaultCorsPolicy);
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -52,6 +73,7 @@ namespace PlantPodService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<LiveDataHub>("/LiveDataHub");
             });
         }
     }

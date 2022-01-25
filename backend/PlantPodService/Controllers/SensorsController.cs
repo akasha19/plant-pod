@@ -1,7 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using PlantPodService.Services;
 using PlantPodService.ViewModel;
+using System;
+using System.Text.Json;
 
 namespace PlantPodService.Controllers
 {
@@ -10,10 +12,13 @@ namespace PlantPodService.Controllers
     public class SensorsController : ControllerBase
     {
         private readonly ILiveDataService _liveDataService;
+        private readonly IHubContext<LiveDataHub> _liveDataHubContext;
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = new LowerCaseNamingPolicy() };
 
-        public SensorsController(ILiveDataService liveDataService)
+        public SensorsController(ILiveDataService liveDataService, IHubContext<LiveDataHub> liveDataHubContext)
         {
             _liveDataService = liveDataService;
+            _liveDataHubContext = liveDataHubContext;
         }
 
         [HttpPost]
@@ -22,12 +27,20 @@ namespace PlantPodService.Controllers
             try
             {
                 _liveDataService.SetSensorData(data);
-                return Ok();
             }
             catch (InvalidOperationException e)
             {
                 return BadRequest(e.Message);
             }
+
+            SendDataToClientsAsync();
+
+            return Ok();
+        }
+
+        private async void SendDataToClientsAsync()
+        {
+            await _liveDataHubContext.Clients.All.SendAsync("SensorData", JsonSerializer.Serialize(_liveDataService.GetSensorData(), _jsonSerializerOptions));
         }
     }
 }
