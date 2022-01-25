@@ -13,7 +13,6 @@ namespace PlantPodService.Model
         {
             new PlantEntityConfiguration().Configure(modelBuilder.Entity<PlantEntity>());
             new RoomEntityConfiguration().Configure(modelBuilder.Entity<RoomEntity>());
-
         }
     }
 }
