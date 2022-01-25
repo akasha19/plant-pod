@@ -1,23 +1,34 @@
 <mat-card class="main-card title">
    <mat-card-title>Plant Details</mat-card-title>
 </mat-card>
-<mat-card class="main-card">
-   <mat-card-header>
-      <mat-card-title class="title">{{ plant.name }}</mat-card-title>
-   </mat-card-header>
-   <mat-card class="text-card flex-container">
-      <div class="text-card-item">
-         <img class="img" src="{{plant.imageSource}}">
-      </div>
-      <sensor-overview [id]="plant.id" class="text-card-item plant-card">
-
-      </sensor-overview>
-
-      <div class="text-card-item">
-         <div>
-            <button mat-raised-button color="primary" class="vertical-line">Room info</button>
-            <button mat-raised-button color="primary" class="vertical-line">Plantpedia</button>
+<div *ngIf="(plant$ | async) as plant; else loadingIndicator">
+   <mat-card class="main-card">
+      <mat-card-header>
+         <mat-card-title class="title">{{ plant.shortName }}</mat-card-title>
+      </mat-card-header>
+      <mat-card class="text-card flex-container">
+         <div class="text-card-item">
+            <img class="img" src="{{plant.imageSource}}">
          </div>
-      </div>
+         <sensor-overview [id]="sensorId" class="text-card-item plant-card">
+
+         </sensor-overview>
+
+         <div class="text-card-item">
+            <div>
+               <button mat-raised-button color="primary" class="vertical-line"
+                  [routerLink]="['/plantpedia']">Plantpedia</button>
+            </div>
+         </div>
+      </mat-card>
    </mat-card>
-</mat-card>
+</div>
+
+<ng-template #loadingIndicator>
+   <loading-indicator></loading-indicator>
+</ng-template>
+
+<div *ngIf="error.hasError">
+   <!-- Todo: Error popup here -->
+   Error: {{error.message}}
+</div>

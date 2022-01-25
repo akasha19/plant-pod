@@ -22,11 +22,12 @@
          </sensor-overview>
          <div class="text-card-item">
             <div>
-               <button mat-raised-button color="primary" class="vertical-line">plant info</button>
+               <button mat-raised-button color="primary" class="vertical-line"
+                  [routerLink]="['/plant-details', room.plantId, room.sensorId]">plant info</button>
             </div>
             <div>
                <button mat-raised-button color="primary" class="vertical-line"
-                  [routerLink]="['/room-details', room.id,]">room info</button>
+                  [routerLink]="['/room-details', room.id]">room info</button>
             </div>
          </div>
       </mat-card>

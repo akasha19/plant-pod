@@ -15,7 +15,7 @@ const routes: Routes = [
     component: RoomOverviewPageComponent
   },
   {
-    path: 'plant-details',
+    path: 'plant-details/:id/:sensorId',
     component: PlantDetailsPageComponent
   },
   {
