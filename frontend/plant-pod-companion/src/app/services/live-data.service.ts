@@ -25,6 +25,7 @@ export class LiveDataService {
       .build();
 
     connection.on("SensorData", (message: string) => {
+      console.log(message)
       this.onNewSensorData(message)
     });
 

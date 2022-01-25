@@ -22,7 +22,7 @@ namespace PlantPodService.Controllers
         }
 
         [HttpPost]
-        public IActionResult ReceiveSensorData([FromBody] Sensor data)
+        public IActionResult ReceiveSensorData([FromBody] ArduinoSensor data)
         {
             try
             {

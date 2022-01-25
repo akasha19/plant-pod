@@ -3,6 +3,6 @@ export interface Sensor {
   humidity: number;
   ph: number;
   temperature: number;
-  moisture: number;
+  moisture: string;
   airQuality: string;
 }
