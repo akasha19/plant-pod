@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { RoomsService } from '../services/rooms.service';
+import { OverviewType } from '../types/OverviewType';
 import { RequestError } from '../types/RequestError';
 import { Room } from '../types/Room';
 
@@ -14,6 +15,8 @@ export class RoomOverviewPageComponent implements OnInit {
 
   rooms$: Observable<Room[]> | undefined;
   error: RequestError = { hasError: false };
+
+  readonly overviewType: string = OverviewType.All.toString()
 
   constructor(private roomsService: RoomsService) { }
 

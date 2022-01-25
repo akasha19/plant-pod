@@ -14,7 +14,7 @@
                 <ul>
                     <li *ngFor="let facility of room.facilities">{{facility}}</li>
                 </ul>
-                <sensor-overview [id]="room.sensorId"></sensor-overview>
+                <sensor-overview [id]="room.sensorId" [overviewType]="overviewType"></sensor-overview>
             </mat-card>
         </mat-card-content>
     </mat-card>

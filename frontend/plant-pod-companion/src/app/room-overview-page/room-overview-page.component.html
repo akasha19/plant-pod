@@ -17,7 +17,7 @@
          <div class="text-card-item">
             <img class="img" src="{{room.imageSource}}">
          </div>
-         <sensor-overview [id]="room.sensorId" class="text-card-item">
+         <sensor-overview [id]="room.sensorId" [overviewType]="overviewType" class="text-card-item">
 
          </sensor-overview>
          <div class="text-card-item">
@@ -25,7 +25,8 @@
                <button mat-raised-button color="primary" class="vertical-line">plant info</button>
             </div>
             <div>
-               <button mat-raised-button color="primary" class="vertical-line">room info</button>
+               <button mat-raised-button color="primary" class="vertical-line"
+                  [routerLink]="['/room-details', room.id,]">room info</button>
             </div>
          </div>
       </mat-card>

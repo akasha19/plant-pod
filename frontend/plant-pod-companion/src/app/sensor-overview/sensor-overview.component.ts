@@ -14,6 +14,9 @@ export class SensorOverviewComponent {
   @Input()
   id: string | undefined;
 
+  @Input()
+  overviewType: string | undefined;
+
   sensor$: Observable<Sensor | undefined>;
 
   constructor(liveDataService: LiveDataService) {
