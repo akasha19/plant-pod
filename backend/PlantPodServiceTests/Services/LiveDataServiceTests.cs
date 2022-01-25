@@ -60,7 +60,7 @@ namespace PlantPodServiceTests.Services
         {
             var result = Sut.GetSensorData();
 
-            result.Should().BeOfType<ImmutableList<Sensor>>().And.NotBeEmpty();
+            result.Should().BeOfType<ImmutableArray<Sensor>>().And.NotBeEmpty();
         }
 
         [Test]
@@ -84,26 +84,6 @@ namespace PlantPodServiceTests.Services
             var result = Sut.GetSensorData();
 
             result.Should().BeEquivalentTo(new[] { data, dataTwo });
-        }
-
-        [Test]
-        public void GetSensorDataById_ShouldReturnSensorData()
-        {
-            var result = Sut.GetSensorDataById(ValidSensorId);
-
-            result.Should().BeOfType<Sensor>();
-        }
-
-        [Test]
-        public void GetSensorDataById_ShouldReturnNewestSensorData()
-        {
-            var data = new Sensor { Id = ValidSensorId, Temperature = 22.3m, Humidity = 38.7m, Moisture = 58.7m, Ph = 6.8m };
-            Sut.SetSensorData(SensorData(null));
-            Sut.SetSensorData(data);
-
-            var result = Sut.GetSensorDataById(ValidSensorId);
-
-            result.Should().BeSameAs(data);
         }
 
         private Sensor SensorData(Guid? id) => new Sensor()

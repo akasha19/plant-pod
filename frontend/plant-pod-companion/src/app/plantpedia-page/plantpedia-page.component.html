@@ -2,57 +2,70 @@
 <mat-card class="main-card title">
   <mat-card-title>Plantpedia</mat-card-title>
 </mat-card>
-<div *ngFor="let plant of plants">
-  <mat-card class="main-card">
-    <mat-card-header>
-      <img mat-card-avatar src="{{plant.imageSource}}">
-      <mat-card-title>{{ plant.shortName }}</mat-card-title>
-      <mat-card-subtitle>{{ plant.longName }}</mat-card-subtitle>
 
-    </mat-card-header>
-    <mat-card-content>
-      <div class="info-container">
-        <div class="button-merger">
-          <button mat-flat-button class="min-button" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{minTemperatureTooltip}}">{{ plant.minTemperature }}&deg; C</button>
+<div *ngIf="(plants$ | async) as plants; else loadingIndicator">
+  <div *ngFor="let plant of plants">
+    <mat-card class="main-card">
+      <mat-card-header>
+        <img mat-card-avatar src="{{plant.imageSource}}">
+        <mat-card-title>{{ plant.shortName }}</mat-card-title>
+        <mat-card-subtitle>{{ plant.longName }}</mat-card-subtitle>
 
-          <button mat-flat-button class="max-button" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{maxTemperatureTooltip}}">{{ plant.maxTemperature }}&deg; C</button>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="info-container">
+          <div class="button-merger">
+            <button mat-flat-button class="min-button" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+              matTooltip="{{minTemperatureTooltip}}">{{ plant.minTemperature }}&deg; C</button>
+
+            <button mat-flat-button class="max-button" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+              matTooltip="{{maxTemperatureTooltip}}">{{ plant.maxTemperature }}&deg; C</button>
+          </div>
+
+          <div class="button-merger">
+            <button mat-flat-button class="min-button" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+              matTooltip="{{minphTooltip}}">pH: {{ plant.minph }}</button>
+
+            <button mat-flat-button class="max-button" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+              matTooltip="{{maxphTooltip}}">pH: {{ plant.maxph }}</button>
+          </div>
+
+          <div class="button-merger">
+            <button mat-flat-button class="min-button" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+              matTooltip="{{minHumidityTooltip}}">RH: {{ plant.minHumidity }}%</button>
+
+            <button mat-flat-button class="max-button" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
+              matTooltip="{{maxHumidityTooltip}}">RH: {{ plant.maxHumidity }}%</button>
+          </div>
+          <div class="button-merger">
+            <button mat-flat-button class="button-fit" color="primary" [matTooltipShowDelay]=50
+              [matTooltipHideDelay]=250 matTooltip="{{ moistureLevelTooltips.get(plant.moisture) }}">{{ plant.moisture
+              }}</button>
+          </div>
         </div>
 
-        <div class="button-merger">
-          <button mat-flat-button class="min-button" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{minphTooltip}}">pH: {{ plant.minph }}</button>
+        <mat-card class="text-card">
+          <mat-card-title style="margin-bottom: 0.5rem;">Description</mat-card-title>
+          <mat-card-content>
+            {{ plant.description }}
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="text-card">
+          <mat-card-title>Care</mat-card-title>
+          <mat-card-content>
+            {{ plant.care }}
+          </mat-card-content>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 
-          <button mat-flat-button class="max-button" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{maxphTooltip}}">pH: {{ plant.maxph }}</button>
-        </div>
+<ng-template #loadingIndicator>
+  <loading-indicator></loading-indicator>
+</ng-template>
 
-        <div class="button-merger">
-          <button mat-flat-button class="min-button" color="accent" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{minHumidityTooltip}}">RH: {{ plant.minHumidity }}%</button>
-
-          <button mat-flat-button class="max-button" color="warn" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{maxHumidityTooltip}}">RH: {{ plant.maxHumidity }}%</button>
-        </div>
-        <div class="button-merger">
-          <button mat-flat-button class="button-fit" color="primary" [matTooltipShowDelay]=50 [matTooltipHideDelay]=250
-            matTooltip="{{ moistureLevelTooltips.get(plant.moisture) }}">{{ plant.moisture }}</button>
-        </div>
-      </div>
-
-      <mat-card class="text-card">
-        <mat-card-title style="margin-bottom: 0.5rem;">Description</mat-card-title>
-        <mat-card-content>
-          {{ plant.description }}
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="text-card">
-        <mat-card-title>Care</mat-card-title>
-        <mat-card-content>
-          {{ plant.care }}
-        </mat-card-content>
-      </mat-card>
-    </mat-card-content>
-  </mat-card>
+<div *ngIf="error.hasError">
+  <!-- Todo: Error popup here -->
+  Error: {{error.message}}
 </div>

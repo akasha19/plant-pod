@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { LiveDataService } from '../services/live-data.service';
 import { Sensor } from '../types/Sensor';
 
 @Component({
@@ -7,22 +9,20 @@ import { Sensor } from '../types/Sensor';
   styleUrls: ['./sensor-overview.component.scss']
 })
 
-export class SensorOverviewComponent implements OnInit {
+export class SensorOverviewComponent {
 
   @Input()
   id: string | undefined;
 
-  sensor: Sensor | undefined;
+  @Input()
+  overviewType: string | undefined;
 
-  ngOnInit(): void {
+  sensor$: Observable<Sensor | undefined>;
 
-    this.sensor = {
-      id: this.id ?? "",
-      humidity: 52,
-      ph: 5,
-      temperature: 18,
-      moisture: "Moist",
-    }
-
+  constructor(liveDataService: LiveDataService) {
+    this.sensor$ = liveDataService.sensorData$.asObservable()
+      .pipe(map((sensors) => {
+        return sensors.find(s => s.id === this.id)
+      }))
   }
 }
