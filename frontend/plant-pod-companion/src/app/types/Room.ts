@@ -1,8 +1,8 @@
 export interface Room {
     id: string;
     sensorId: string;
-    roomName: string;
-    shortDescription: string;
+    name: string;
+    description: string;
     facilities: string[];
     imageSource: string;
 }

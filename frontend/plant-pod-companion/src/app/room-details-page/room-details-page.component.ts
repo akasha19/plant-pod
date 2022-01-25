@@ -1,25 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { Sensor } from "../types/Sensor";
 import { Room } from "../types/Room";
+import { RoomsService } from '../services/rooms.service';
+import { map, Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { RequestError } from '../types/RequestError';
 
 @Component({
   selector: 'app-room-details-page',
   templateUrl: './room-details-page.component.html',
   styleUrls: ['./room-details-page.component.scss']
 })
+
 export class RoomDetailsPageComponent implements OnInit {
 
-  room: Room | undefined;
+  id: string | undefined;
+  room$: Observable<Room> | undefined;
+  error: RequestError = { hasError: false };
+
+  constructor(
+    private route: ActivatedRoute,
+    private roomsService: RoomsService
+  ) { }
 
   ngOnInit(): void {
-    this.room =
-    {
-      id: "1",
-      sensorId: "1",
-      roomName: "Living Room",
-      shortDescription: "A Living Room on the first floor of the house",
-      facilities: ["Airconditioning", "Heating", "Humidifier"],
-      imageSource: "../assets/img/aloevera.jpg"
-    }
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      if (this.id) {
+        this.roomsService.getRoomById(this.id)
+          .pipe(map((value) => {
+            if (value.success && value.data) {
+              this.room$ = of(value.data)
+            } else {
+              this.error = { hasError: true, message: value.message };
+            }
+          })).subscribe();
+      }
+    });
   }
 }
