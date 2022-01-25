@@ -1,0 +1,52 @@
+@import '../app.component.scss';
+
+.title{
+  padding: 1rem;
+}
+
+.subtitle{
+  padding: 2rem;
+}
+
+.vertical-line {
+display: block;
+width: auto;
+margin: 1.5rem;
+margin-left:4rem;
+float:left;
+}
+
+.img {
+  width: 15rem;
+  height: 10rem;
+  margin-top:0.5rem;
+  margin-left:0.8rem;
+  display: inline-block;
+}
+
+.text-card-item {
+  width: 15rem;
+  padding: 1rem;
+  text-align: center;
+  display: inline-block;
+}
+
+.flex-container {
+  padding: 0;
+  display: flex;
+}
+
+.container{
+  text-align:justify;
+}
+
+.plant-card{
+  margin-top:1.2rem;
+  padding-left:2rem;
+}
+
+.text{
+  padding-left:4rem;
+  margin:1.5rem;
+  text-align: left;
+}

@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { SERVICE_URL } from '../app.module';
-import { Plant } from '../plantpedia-page/plant';
+import { Plant } from '../types/Plant';
 import { Response } from './Response';
 
 @Injectable({
@@ -28,6 +28,18 @@ export class PlantsService {
       }))
       .pipe(catchError((error: HttpErrorResponse) => {
         console.error(`error while requesting plants, status code: ${error.status}, message: ${error.message}`);
+        return of({ success: false, message: error.message });
+      }));
+  }
+
+  getPlantById(id: string): Observable<Response<Plant>> {
+    return this.client.get<Plant>(`${this.url}/${id}`)
+      .pipe(map((value: Plant) => {
+        value.imageSource = `assets/img/${value.shortName.replace(" ", "").toLowerCase()}.jpg`
+        return { success: true, data: value }
+      }))
+      .pipe(catchError((error: HttpErrorResponse) => {
+        console.error(`error while requesting plant, status code: ${error.status}, message: ${error.message}`);
         return of({ success: false, message: error.message });
       }));
   }

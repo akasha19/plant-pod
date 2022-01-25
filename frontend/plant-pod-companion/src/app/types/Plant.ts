@@ -1,4 +1,4 @@
-import { MoistureLevel } from "./MoistureLevels";
+import { MoistureLevel } from "../plantpedia-page/MoistureLevels";
 
 export interface Plant {
     id: string;

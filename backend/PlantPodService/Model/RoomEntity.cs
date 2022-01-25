@@ -12,6 +12,11 @@ namespace PlantPodService.Model
 
         public Guid SensorId { get; set; }
 
+        [ForeignKey("PlantEntity")]
+        public Guid PlantId { get; set; }
+
+        public PlantEntity Plant { get; set; }
+
         [MaxLength(64)]
         public string Name { get; set; }
 

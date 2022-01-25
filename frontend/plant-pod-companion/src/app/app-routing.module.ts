@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlantpediaPageComponent } from './plantpedia-page/plantpedia-page.component';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
 import { RoomOverviewPageComponent } from './room-overview-page/room-overview-page.component';
+import { PlantDetailsPageComponent } from './plant-details-page/plant-details-page.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'room-overview',
     component: RoomOverviewPageComponent
+  },
+  {
+    path: 'plant-details/:id/:sensorId',
+    component: PlantDetailsPageComponent
   },
   {
     path: 'room-details/:id',

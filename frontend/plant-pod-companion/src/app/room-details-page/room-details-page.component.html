@@ -1,5 +1,5 @@
 <mat-card class="main-card title">
-    <mat-card-title>Room Overview</mat-card-title>
+    <mat-card-title>Room Details</mat-card-title>
 </mat-card>
 <div *ngIf="(room$ | async) as room; else loadingIndicator">
     <mat-card class="main-card">
@@ -14,7 +14,10 @@
                 <ul>
                     <li *ngFor="let facility of room.facilities">{{facility}}</li>
                 </ul>
-                <sensor-overview [id]="room.sensorId" [overviewType]="overviewType"></sensor-overview>
+                <div class="restrict-width">
+                    <sensor-overview [id]="room.sensorId" [overviewType]="overviewType">
+                    </sensor-overview>
+                </div>
             </mat-card>
         </mat-card-content>
     </mat-card>

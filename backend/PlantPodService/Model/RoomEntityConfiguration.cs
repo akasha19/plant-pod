@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Linq;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PlantPodService.Model
 {
@@ -11,6 +10,8 @@ namespace PlantPodService.Model
     {
         public void Configure(EntityTypeBuilder<RoomEntity> builder)
         {
+            builder.HasOne(e => e.Plant);
+
             builder
                 .Property(e => e.Facilities)
                 .HasConversion(
@@ -35,6 +36,7 @@ namespace PlantPodService.Model
             {
                 Id = Guid.Parse("487ac8ee-0d70-4377-b216-0045182b7638"),
                 SensorId = Guid.Parse("196db225-e5ef-4636-b967-c214a0ddb73f"),
+                PlantId = Guid.Parse("0ef97408-0dac-46cf-aba1-d07235992bdd"),
                 Name = "Presentation room",
                 Description = "presentation room for 100 people",
                 Facilities = new[] {"Airconditioning", "heating", "smartprojector", "smartplants"},
@@ -44,6 +46,7 @@ namespace PlantPodService.Model
             {
                 Id = Guid.Parse("177bead7-1b35-46c5-83ad-026faefa2ca1"),
                 SensorId = Guid.Parse("3dd86e81-b88c-4b37-b740-a662fa116245"),
+                PlantId = Guid.Parse("79924374-44ad-4f9f-938b-6ac89e7ec60c"),
                 Name = "Meeting room",
                 Description = "meeting room for 8 people",
                 Facilities = new[] {"Airconditioning", "heating", "smartboard", "smartplants"},

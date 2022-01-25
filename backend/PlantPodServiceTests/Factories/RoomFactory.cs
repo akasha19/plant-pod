@@ -17,7 +17,8 @@ namespace PlantPodServiceTests.Factories
             Description = "Description for some room",
             Facilities = new[] { "a facility", "another facility", "and a third" },
             ImageSource = "some/path/to/image.jpg",
-            SensorId = sensorId
+            SensorId = sensorId,
+            PlantId = Guid.Parse("2f1fbe39-29c5-414a-9a24-f23418c5da0b")
         };
 
         public static Room Room(Guid id, Guid sensorId) => new Room
@@ -27,7 +28,9 @@ namespace PlantPodServiceTests.Factories
             Description = "Description for some room",
             Facilities = new[] {"a facility", "another facility", "and a third"},
             ImageSource = "some/path/to/image.jpg",
-            SensorId = sensorId
+            SensorId = sensorId,
+            PlantId = Guid.Parse("2f1fbe39-29c5-414a-9a24-f23418c5da0b")
+
         };
     }
 }

@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RoomDetailsPageComponent } from './room-details-page/room-details-page.component';
+import { PlantDetailsPageComponent } from './plant-details-page/plant-details-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
@@ -22,6 +23,7 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
     SensorOverviewComponent,
     PlantpediaPageComponent,
     RoomDetailsPageComponent,
+    PlantDetailsPageComponent,
     LoadingIndicatorComponent
   ],
   imports: [

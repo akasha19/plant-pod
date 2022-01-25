@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { PlantsService } from '../services/plants.service';
+import { Plant } from '../types/Plant';
 import { RequestError } from '../types/RequestError';
 import { MoistureLevel } from './MoistureLevels';
-import { Plant } from './plant';
 
 @Component({
   selector: 'app-plantpedia-page',
