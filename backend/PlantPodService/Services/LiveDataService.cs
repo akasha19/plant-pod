@@ -10,9 +10,7 @@ namespace PlantPodService.Services
     {
         public void SetSensorData(Sensor data);
 
-        public IImmutableList<Sensor> GetSensorData();
-
-        public Sensor GetSensorDataById(Guid id);
+        public ImmutableArray<Sensor> GetSensorData();
     }
 
     public sealed class LiveDataService : ILiveDataService
@@ -27,22 +25,9 @@ namespace PlantPodService.Services
             }
         }
 
-        public IImmutableList<Sensor> GetSensorData()
+        public ImmutableArray<Sensor> GetSensorData()
         {
-            return _sensorData.Values.ToImmutableList();
-        }
-
-        public Sensor GetSensorDataById(Guid id)
-        {
-            try
-            {
-                var data = _sensorData[id];
-                return data;
-            }
-            catch (KeyNotFoundException)
-            {
-                return null;
-            }
+            return _sensorData.Values.ToImmutableArray();
         }
 
         public void SetSensorData(Sensor data)

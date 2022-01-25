@@ -1,5 +1,5 @@
 <mat-card class="sensor-overview">
-    <table *ngIf="sensor">
+    <table *ngIf="(sensor$ | async) as sensor">
         <tr>
             <td class="right-align">Temperature:</td>
             <td>{{ sensor.temperature }}</td>
@@ -8,13 +8,17 @@
             <td class="right-align">Humidity:</td>
             <td>{{ sensor.humidity }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="overviewType == 'plant' || overviewType == 'all'">
             <td class="right-align">pH Value:</td>
             <td>{{ sensor.ph }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="overviewType == 'plant' || overviewType == 'all'">
             <td class="right-align">Moisture:</td>
             <td>{{ sensor.moisture }}</td>
+        </tr>
+        <tr *ngIf="overviewType == 'room' || overviewType == 'all'">
+            <td class="right-align">Air quality:</td>
+            <td>{{ sensor.airQuality }}</td>
         </tr>
     </table>
 </mat-card>

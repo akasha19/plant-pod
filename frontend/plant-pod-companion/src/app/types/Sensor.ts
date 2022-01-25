@@ -4,4 +4,5 @@ export interface Sensor {
   ph: number;
   temperature: number;
   moisture: number;
+  airQuality: string;
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable, of } from 'rxjs';
+import { RoomsService } from '../services/rooms.service';
+import { OverviewType } from '../types/OverviewType';
+import { RequestError } from '../types/RequestError';
 import { Room } from '../types/Room';
 
 @Component({
@@ -9,27 +13,21 @@ import { Room } from '../types/Room';
 
 export class RoomOverviewPageComponent implements OnInit {
 
-  rooms: Room[] | undefined;
+  rooms$: Observable<Room[]> | undefined;
+  error: RequestError = { hasError: false };
 
+  readonly overviewType: string = OverviewType.All.toString()
+
+  constructor(private roomsService: RoomsService) { }
 
   ngOnInit(): void {
-    this.rooms = [
-      {
-        id: "1",
-        sensorId: "1",
-        name: "Presentation room",
-        description: "presentation room for 100 people",
-        facilities: ['Airconditioning', 'heating', 'smartprojector', 'smartplants'],
-        imageSource: "assets/img/room_1.jpg"
-      },
-      {
-        id: "2",
-        sensorId: "2",
-        name: "Meeting room",
-        description: "meeting room for 8 people",
-        facilities: ['Airconditioning', 'heating', 'smartboard', 'smartplants'],
-        imageSource: "assets/img/room_2.jpg"
-      },
-    ]
+    this.roomsService.getRooms()
+      .pipe(map((value) => {
+        if (value.success && value.data) {
+          this.rooms$ = of(value.data)
+        } else {
+          this.error = { hasError: true, message: value.message };
+        }
+      })).subscribe();
   }
 }
