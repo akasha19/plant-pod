@@ -12,6 +12,8 @@ namespace PlantPodService.Model
 
         public Guid SensorId { get; set; }
 
+        public Guid PlantId { get; set; }
+
         [MaxLength(64)]
         public string Name { get; set; }
 
