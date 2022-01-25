@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 using PlantPodService.Services;
 using PlantPodService.ViewModel;
 using System;
+using System.Text.Json;
 
 namespace PlantPodService.Controllers
 {
@@ -12,6 +13,7 @@ namespace PlantPodService.Controllers
     {
         private readonly ILiveDataService _liveDataService;
         private readonly IHubContext<LiveDataHub> _liveDataHubContext;
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = new LowerCaseNamingPolicy() };
 
         public SensorsController(ILiveDataService liveDataService, IHubContext<LiveDataHub> liveDataHubContext)
         {
@@ -38,7 +40,7 @@ namespace PlantPodService.Controllers
 
         private async void SendDataToClientsAsync()
         {
-            await _liveDataHubContext.Clients.All.SendAsync("ReceiveMessage", _liveDataService.GetSensorData());
+            await _liveDataHubContext.Clients.All.SendAsync("SensorData", JsonSerializer.Serialize(_liveDataService.GetSensorData(), _jsonSerializerOptions));
         }
     }
 }
