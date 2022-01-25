@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Linq;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PlantPodService.Model
 {
@@ -11,6 +10,8 @@ namespace PlantPodService.Model
     {
         public void Configure(EntityTypeBuilder<RoomEntity> builder)
         {
+            builder.HasOne(e => e.Plant);
+
             builder
                 .Property(e => e.Facilities)
                 .HasConversion(
