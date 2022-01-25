@@ -1,5 +1,5 @@
 <mat-card class="sensor-overview">
-    <table *ngIf="sensor">
+    <table *ngIf="(sensor$ | async) as sensor">
         <tr>
             <td class="right-align">Temperature:</td>
             <td>{{ sensor.temperature }}</td>

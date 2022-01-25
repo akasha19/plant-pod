@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PlantPodService.Controllers;
 using PlantPodService.Model;
 using PlantPodService.Services;
 using PlantPodService.Services.Persistence;
@@ -36,6 +36,8 @@ namespace PlantPodService
 
             services.AddDbContext<PlantPodServiceDbContext>(op => op.UseSqlServer(Configuration["ConnectionString:PlantPodServiceDb"]), optionsLifetime: ServiceLifetime.Singleton, contextLifetime: ServiceLifetime.Singleton);
             services.AddSingleton<DbContext>(sp => sp.GetRequiredService<PlantPodServiceDbContext>());
+
+            services.AddSignalR();
 
             services.AddCors(
                 options =>
@@ -71,6 +73,7 @@ namespace PlantPodService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<LiveDataHub>("/LiveDataHub");
             });
         }
     }
