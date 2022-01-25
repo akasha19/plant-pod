@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { SERVICE_URL } from '../app.module';
 import { Sensor } from '../types/Sensor';
 import * as signalR from "@microsoft/signalr";
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
