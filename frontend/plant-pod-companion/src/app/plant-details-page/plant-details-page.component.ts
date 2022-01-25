@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plant } from '../types/Plant';
-
+import { Sensor } from '../types/Sensor';
 @Component({
   selector: 'app-plant-details-page',
   templateUrl: './plant-details-page.component.html',

@@ -5,17 +5,18 @@
    <mat-card-header>
       <mat-card-title class="title">{{ plant.name }}</mat-card-title>
    </mat-card-header>
-   <mat-card-subtitle class="subtitle">{{ plant.description }}</mat-card-subtitle>
    <mat-card class="text-card flex-container">
       <div class="text-card-item">
          <img class="img" src="{{plant.imageSource}}">
       </div>
-      <div class="text-card-item">
-         <p>plant info here</p>
-      </div>
+      <sensor-overview [id]="plant.id" class="text-card-item plant-card">
+
+      </sensor-overview>
+
       <div class="text-card-item">
          <div>
-            <button mat-raised-button color="primary" class="vertical-line">room info</button>
+            <button mat-raised-button color="primary" class="vertical-line">Room info</button>
+            <button mat-raised-button color="primary" class="vertical-line">Plantpedia</button>
          </div>
       </div>
    </mat-card>
