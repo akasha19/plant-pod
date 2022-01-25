@@ -18,7 +18,6 @@ export const SERVICE_URL = new InjectionToken<string>('service.url');
 @NgModule({
   declarations: [
     AppComponent,
-    PlantpediaPageComponent,
     RoomOverviewPageComponent,
     SensorOverviewComponent,
     PlantpediaPageComponent,
