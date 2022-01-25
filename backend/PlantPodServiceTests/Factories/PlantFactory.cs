@@ -4,7 +4,7 @@ using System;
 
 namespace PlantPodServiceTests.Factories
 {
-    static class PlantFactory
+    internal static class PlantFactory
     {
         public static PlantEntity PlantEntity() => PlantEntity(Guid.NewGuid());
 

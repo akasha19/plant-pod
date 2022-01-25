@@ -1,35 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using PlantPodService.Model;
 
 namespace PlantPodService.Services.Persistence
 {
     public interface IRoomService
     {
-        public IEnumerable<RoomEntity> GetRooms();
+        public IEnumerable<RoomEntity> GetAllRooms();
 
-        public RoomEntity GetRoomById();
+        public RoomEntity GetRoomById(Guid id);
 
         public ImmutableArray<Guid> GetSensorIds();
     }
 
     public sealed class RoomService : IRoomService
     {
-        public RoomEntity GetRoomById()
+        private readonly PlantPodServiceDbContext _dbContext;
+
+        public RoomService(PlantPodServiceDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+        }
+
+        public RoomEntity GetRoomById(Guid id)
+        {
+            return _dbContext.Rooms.FirstOrDefault(e => e.Id == id);
         }
 
         public ImmutableArray<Guid> GetSensorIds()
         {
-            //Todo: implement
-            return new [] { Guid.Parse("196db225-e5ef-4636-b967-c214a0ddb73f") }.ToImmutableArray();
+            return _dbContext.Rooms.Select(e => e.SensorId).ToImmutableArray();
         }
 
-        public IEnumerable<RoomEntity> GetRooms()
+        public IEnumerable<RoomEntity> GetAllRooms()
         {
-            throw new NotImplementedException();
+            return _dbContext.Rooms;
         }
     }
 }

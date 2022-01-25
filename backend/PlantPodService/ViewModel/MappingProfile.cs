@@ -8,6 +8,7 @@ namespace PlantPodService.ViewModel
         public MappingProfile()
         {
             CreateMap<PlantEntity, Plant>();
+            CreateMap<RoomEntity, Room>();
         }
     }
 }

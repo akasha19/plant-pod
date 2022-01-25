@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { PlantsService } from '../services/plants.service';
+import { RequestError } from '../types/RequestError';
 import { MoistureLevel } from './MoistureLevels';
 import { Plant } from './plant';
 
@@ -10,9 +11,10 @@ import { Plant } from './plant';
   styleUrls: ['./plantpedia-page.component.scss']
 })
 
-export class PlantpediaPageComponent {
+export class PlantpediaPageComponent implements OnInit {
 
-  plants: Observable<Plant[] | undefined>;
+  plants$: Observable<Plant[]> | undefined;
+  error: RequestError = { hasError: false };
 
   readonly maxTemperatureTooltip = "(Maximum Temperature) Too high temperatures and this plant could dry out and die. Try opening a window or turning down the heating. If the plant is in direct sunlight, try moving it to a less sunny area for some time.";
   readonly minTemperatureTooltip = "(Minimum Temperature) When the plant is too cold, it could damage the plant and eventually kill it. Too cold environments will also stop it from growing. Try putting the plant in a more sunny area, turning up the heating for some time, or closing a window.";
@@ -29,7 +31,16 @@ export class PlantpediaPageComponent {
   ]);
 
 
-  constructor(plantsService: PlantsService) {
-    this.plants = plantsService.getPlants()
+  constructor(private plantsService: PlantsService) { }
+
+  ngOnInit(): void {
+    this.plantsService.getPlants()
+      .pipe(map((value) => {
+        if (value.success && value.data) {
+          this.plants$ = of(value.data)
+        } else {
+          this.error = { hasError: true, message: value.message };
+        }
+      })).subscribe();
   }
 }

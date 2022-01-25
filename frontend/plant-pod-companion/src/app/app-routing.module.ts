@@ -9,7 +9,7 @@ const routes: Routes = [
     component: PlantpediaPageComponent
   },
   {
-    path: 'room-details',
+    path: 'room-details/:id',
     component: RoomDetailsPageComponent
   }
 ];
