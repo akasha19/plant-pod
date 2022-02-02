@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LiveDataService } from '../services/live-data.service';
 import { Sensor } from '../types/Sensor';
 
 @Component({
@@ -8,30 +10,14 @@ import { Sensor } from '../types/Sensor';
 })
 export class WarningComponent implements OnInit {
 
-  sensors: Sensor[] | undefined;
-  roomNames: {[id: string]: string}={}
+  @Input()
+  roomNames: { [id: string]: string } | undefined;
 
-  constructor() {
-    this.roomNames["1"]="living room",
-    this.roomNames["2"]="bedroom"
-   }
+  sensors$: Observable<Sensor[]> | undefined;
+
+  constructor(private liveDataService: LiveDataService) { }
 
   ngOnInit(): void {
-
-    this.sensors = [{
-      id: "1",
-      humidity: 52,
-      ph: 5,
-      temperature: 17,
-      moisture: "Wet",
-    },
-    {
-      id: "2",
-      humidity: 49,
-      ph: 7,
-      temperature: 30,
-      moisture: "Dry",
-    }
-  ]
+    this.sensors$ = this.liveDataService.sensorData$.asObservable()
   }
 }
