@@ -15,7 +15,6 @@ export class RoomOverviewPageComponent implements OnInit {
 
   rooms$: Observable<Room[]> | undefined;
   error: RequestError = { hasError: false };
-  roomNames: { [id: string]: string } = {}
 
   readonly overviewType: string = OverviewType.All.toString()
 
@@ -26,7 +25,6 @@ export class RoomOverviewPageComponent implements OnInit {
       .pipe(map((value) => {
         if (value.success && value.data) {
           this.rooms$ = of(value.data)
-          value.data.forEach((value) => this.roomNames[value.id] = value.name)
         } else {
           this.error = { hasError: true, message: value.message };
         }

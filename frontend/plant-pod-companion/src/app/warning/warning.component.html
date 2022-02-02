@@ -1,5 +1,5 @@
 <!--Warning Temp Low-->
-<div *ngIf="roomNames">
+<div *ngIf="(roomNames$ | async) as roomNames">
   <div *ngFor="let sensor of (sensors$ | async)">
     <mat-card *ngIf="sensor.temperature < 18" class="main-card yellow">
       <mat-card-title>Temperature Warning</mat-card-title>
@@ -43,22 +43,22 @@
     </mat-card>
 
     <!--Warning pH level Low-->
-    <mat-card *ngIf="sensor.ph < 5" class="main-card yellow">
+    <!-- <mat-card *ngIf="sensor.ph < 5" class="main-card yellow">
       <mat-card-title>Plant pH level Warning</mat-card-title>
       <mat-card-subtitle class="align"><B>The pH of the soil in {{roomNames[sensor.id]}} is too low. Adding granulated
           limestone to the soil will help increase the pH of the soil.</B>
         <br>A pH that is too high for the plant, could eventually kill the plant due to root rot and root decay.
       </mat-card-subtitle>
-    </mat-card>
+    </mat-card> -->
 
     <!--Warning pH level High-->
-    <mat-card *ngIf="sensor.ph > 8.5" class="main-card yellow">
+    <!-- <mat-card *ngIf="sensor.ph > 8.5" class="main-card yellow">
       <mat-card-title>Plant pH level Warning</mat-card-title>
       <mat-card-subtitle class="align"><B>The pH of the soil of the plant in {{roomNames[sensor.id]}} is too high. Try
           adding a small amount of aluminium sulfate or elemental sulfur in order to lower the pH.</B>
         <br>A pH that is too high for the plant, could eventually kill the plant due to root rot and root decay.
       </mat-card-subtitle>
-    </mat-card>
+    </mat-card> -->
 
     <!--Warning Moisture level Low-->
     <!-- <mat-card *ngIf="sensor.moisture < 18" class="main-card yellow">

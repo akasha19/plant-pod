@@ -2,7 +2,7 @@
    <mat-card-title>Room Overview</mat-card-title>
 </mat-card>
 
-<warning-module [roomNames]="roomNames"></warning-module>
+<warning-module></warning-module>
 
 <div *ngIf="(rooms$ | async) as rooms; else loadingIndicator">
    <mat-card class="main-card container" *ngFor="let room of rooms">
