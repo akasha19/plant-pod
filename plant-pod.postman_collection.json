@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "49d04e4d-8239-40fa-84f0-a7087d6645ff",
+		"name": "plant-pod",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sensors",
+			"item": [
+				{
+					"name": "arduino sensor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"196db225-e5ef-4636-b967-c214a0ddb73f\",\r\n    \"temperature\": 16.3,\r\n    \"humidity\": 40.5,\r\n    \"moisture\": 899,\r\n    \"ph\": 7.5,\r\n    \"airQuality\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8588/sensors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8588",
+							"path": [
+								"sensors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "plants",
+			"item": [
+				{
+					"name": "plants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8588/plants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8588",
+							"path": [
+								"plants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single plant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8588/plants/4eeb3e42-c47e-4930-9464-ce81c74502df",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8588",
+							"path": [
+								"plants",
+								"4eeb3e42-c47e-4930-9464-ce81c74502df"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rooms",
+			"item": [
+				{
+					"name": "rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8588/rooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8588",
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8588/rooms/487ac8ee-0d70-4377-b216-0045182b7638",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8588",
+							"path": [
+								"rooms",
+								"487ac8ee-0d70-4377-b216-0045182b7638"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
